@@ -1,10 +1,9 @@
-import Navigation from './routes';
 import {
   BrowserRouter,
   Routes,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 import Chart from './components/pages/Chart';
 import Home from './components/pages/Home';
 import Tasks from './components/pages/Tasks';
