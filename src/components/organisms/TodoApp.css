@@ -1,0 +1,36 @@
+/* TODO App styles */
+.todo-wrapper {
+  background: rgba(117, 241, 244, 0.527);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: center;
+}
+
+.cat-pic {
+  height: 90px;
+  width: 90px;
+}
+
+/* TODO Form styles */
+.todo-form {
+  display: flex;
+  justify-content: center;
+}
+
+.todo-form > button {
+  background-color: lightgray;
+  margin-left: 18px;
+  margin-top: 6px;
+  text-transform: none;
+}
+
+.todo-form > button:hover {
+  background-color: gray;
+}
+
+/* TODO List Styles */
+.todo-wrapper > ul {
+  margin-left: 28rem;
+}
