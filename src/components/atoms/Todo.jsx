@@ -5,9 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 export default function Todo({ todo, removeTodo }) {
 
   function handleRemove() {
-    if(todo) {
-      removeTodo(todo)
-    }
+      removeTodo(todo.id)
   }
 
   return (

@@ -27,13 +27,8 @@ export default function TodoApp() {
     setTodos([todo, ...todos])
   };
 
-  function removeTodo(todo) {
-    let newTodos = [...todos]
-    let index = newTodos.indexOf(todo)
-    if (index !== -1 ){
-      newTodos.splice(index, 1)
-      setTodos(newTodos)
-    }    
+  function removeTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id))   
   }
 
   return (
