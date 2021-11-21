@@ -2,7 +2,14 @@ import React from 'react';
 import { Checkbox, IconButton, ListItem, Typography } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-export default function Todo({ todo }) {
+export default function Todo({ todo, removeTodo }) {
+
+  function handleRemove() {
+    if(todo) {
+      removeTodo(todo)
+    }
+  }
+
   return (
     <ListItem style={{ display: "flex" }}>
       <Checkbox
@@ -18,7 +25,9 @@ export default function Todo({ todo }) {
         { todo.task }
       </Typography>
       <IconButton>
-        <CloseIcon />
+        <CloseIcon 
+        onClick={handleRemove}
+        />
       </IconButton>
     </ListItem>
   )
