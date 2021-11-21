@@ -27,6 +27,10 @@ export default function TodoApp() {
     setTodos([todo, ...todos])
   };
 
+  function removeTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id))   
+  }
+
   return (
     <div className="todo-wrapper">
       <header className="todo-header">
@@ -35,7 +39,7 @@ export default function TodoApp() {
         <img className="cat-pic" src={Luna} />
       </header>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} removeTodo={removeTodo} />
     </div>
   )
 };
