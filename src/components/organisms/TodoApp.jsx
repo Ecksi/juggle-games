@@ -27,6 +27,22 @@ export default function TodoApp() {
     setTodos([todo, ...todos])
   };
 
+  function toggleComplete(id) {
+    setTodos(
+      todos.map(todo => {
+        if (todo.id === id){
+          return {
+            ...todo,
+            completed: !todo.completed
+          }
+        } else {
+          return todo
+        } 
+
+      })
+    )
+  }
+
   function removeTodo(id) {
     setTodos(todos.filter(todo => todo.id !== id))   
   }
@@ -39,7 +55,7 @@ export default function TodoApp() {
         <img className="cat-pic" src={Luna} />
       </header>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} removeTodo={removeTodo} />
+      <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
     </div>
   )
 };

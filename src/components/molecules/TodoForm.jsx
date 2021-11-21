@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@material-ui/core'
+import {v4 as uuidv4} from "uuid"
 
 export default function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
@@ -9,7 +10,7 @@ export default function TodoForm({ addTodo }) {
   });
 
   function generateId() {
-    return Math.random().toString(36).substr(2);
+    return uuidv4();
   }
 
   function handleInputChange(e) {
