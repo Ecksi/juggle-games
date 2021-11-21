@@ -50,9 +50,9 @@ export default function TodoApp() {
   return (
     <div className="todo-wrapper">
       <header className="todo-header">
-        <img className="cat-pic" src={Fable} />
+        <img alt="fable" className="cat-pic" src={Fable} />
         <Typography style={{ padding: 16 }} variant="h2">Task List</Typography>
-        <img className="cat-pic" src={Luna} />
+        <img alt="luna" className="cat-pic" src={Luna} />
       </header>
       <TodoForm addTodo={addTodo} />
       <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
