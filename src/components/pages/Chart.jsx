@@ -9,7 +9,7 @@ export default function Chart(props) {
   return (
     <div>
             <h3>3-ball tricks</h3>
-      <List>
+    <List>
       {allBallTricks['3ball'].map(trick => (
        <Trick trick={trick} numBalls={'3ball'} />
       ))}
