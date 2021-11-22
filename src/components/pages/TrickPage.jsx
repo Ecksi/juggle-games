@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, BrowserRouter as Router, Route, useParams } from "react-router-dom";
-import jugglingTricks from "../../assets/JugglingTricks/JugglingTricks.json"
+import { useSelector } from "react-redux";
 
 export default () => {
-    const [allJugglingTricks, setAllJugglingTricks] = useState(jugglingTricks)
+    const allJugglingTricks = useSelector((state) => state.jugglingTrick.value)
 
     const {numBalls, trickName} = useParams()
     

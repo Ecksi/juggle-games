@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import jugglingTricks from "../../assets/JugglingTricks/JugglingTricks.json"
 import Trick from "../juggling/Trick";
 import { List } from '@material-ui/core';
+import { useSelector } from "react-redux";
 
 export default function Chart(props) {
 
-  const [allBallTricks, setAllBallTricks] = useState(jugglingTricks)
+  const allBallTricks = useSelector((state) => state.jugglingTrick.value)
+
   return (
     <div>
             <h3>3-ball tricks</h3>
