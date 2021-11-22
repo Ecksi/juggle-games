@@ -1,3 +1,4 @@
+import React from "react";
 import {
   BrowserRouter,
   Routes,
@@ -7,7 +8,7 @@ import {
 import Chart from './components/pages/Chart';
 import Home from './components/pages/Home';
 import Tasks from './components/pages/Tasks';
-// import './App.css';
+import TrickPage from './components/pages/TrickPage'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/chart" element={<Chart />}></Route>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/tasks" element={<Tasks />}></Route>
+          <Route path="/jugglingTricks/:numBalls/:trickName" element={<TrickPage/>} />
         </Routes>
       </BrowserRouter>
     </div>
