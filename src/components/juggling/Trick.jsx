@@ -10,7 +10,13 @@ export default function Trick() {
     <React.Fragment>
       <h3>{trick.name}</h3>
       <div>
-        {trick.prereq.map(req => <p>{req}</p>)}
+        <h4>Prerequisites:</h4>
+        {trick.prereq.map(req => {
+          let balls = req[0];
+          let trickIndex = req[6];
+
+          return <p>{tricks[`${balls}ball`][trickIndex]['name']}</p>
+        })}
       </div>
     </React.Fragment>
   );
