@@ -1,16 +1,17 @@
-import { ListItem } from '@material-ui/core'
-import React from 'react'
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import tricks from '../../assets/JugglingTricks/JugglingTricks.json'
 
-export default function Trick({trick}) {
+export default function Trick() {
+  const params = useParams();
+  const trick = tricks[params.numOfBalls].find(trick => trick.name === params.trick)
 
-    return (
-        <ListItem style= {{display: "flex"}}>
-            <p>{trick.name}</p>
-            <ul>
-                {trick.pre.map( id => (
-                    "prerequisites: " + id
-                ))}
-            </ul>
-        </ListItem>
-    )
+  return (
+    <React.Fragment>
+      <h3>{trick.name}</h3>
+      <div>
+        {trick.prereq.map(req => <p>{req}</p>)}
+      </div>
+    </React.Fragment>
+  );
 }
