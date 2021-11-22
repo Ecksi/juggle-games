@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Typography from '@material-ui/core/Typography';
-import TodoForm from '../molecules/TodoForm';
-import TodoList from '../atoms/TodoList';
-import Fable from '../../assets/catPictures/cosmicFable.jpeg';
-import Luna from '../../assets/catPictures/groovyTuna.jpeg';
-import './TodoApp.css';
+import React, { useEffect, useState } from "react";
+import Typography from "@material-ui/core/Typography";
+import TodoForm from "../molecules/TodoForm";
+import TodoList from "../atoms/TodoList";
+import Fable from "../../assets/catPictures/cosmicFable.jpeg";
+import Luna from "../../assets/catPictures/groovyTuna.jpeg";
+import "./TodoApp.css";
 
-const LOCAL_STORAGE_KEY = 'react-todo-list-todos';
+const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
 export default function TodoApp() {
   const [todos, setTodos] = useState([]);
@@ -24,38 +24,43 @@ export default function TodoApp() {
   }, [todos]);
 
   function addTodo(todo) {
-    setTodos([todo, ...todos])
-  };
+    setTodos([todo, ...todos]);
+  }
 
   function toggleComplete(id) {
     setTodos(
-      todos.map(todo => {
-        if (todo.id === id){
+      todos.map((todo) => {
+        if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed
-          }
+            completed: !todo.completed,
+          };
         } else {
-          return todo
-        } 
-
+          return todo;
+        }
       })
-    )
+    );
   }
 
   function removeTodo(id) {
-    setTodos(todos.filter(todo => todo.id !== id))   
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   return (
     <div className="todo-wrapper">
       <header className="todo-header">
-        <img alt="fable" className="cat-pic" src={Fable} />
-        <Typography style={{ padding: 16 }} variant="h2">Task List</Typography>
-        <img alt="luna" className="cat-pic" src={Luna} />
+        <img alt="Fable" className="cat-pic" src={Fable} />
+        <Typography style={{ padding: 16 }} variant="h2">
+          Task List
+        </Typography>
+        <img alt="Luna" className="cat-pic" src={Luna} />
       </header>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
+      <TodoList
+        todos={todos}
+        toggleComplete={toggleComplete}
+        removeTodo={removeTodo}
+      />
     </div>
-  )
-};
+  );
+}

@@ -1,11 +1,10 @@
-import React from 'react';
-import { Checkbox, IconButton, ListItem, Typography } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import React from "react";
+import { Checkbox, IconButton, ListItem, Typography } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
 
 export default function Todo({ todo, toggleComplete, removeTodo }) {
-
   function handleRemove() {
-      removeTodo(todo.id)
+    removeTodo(todo.id);
   }
 
   function handleCheckboxClick() {
@@ -20,17 +19,15 @@ export default function Todo({ todo, toggleComplete, removeTodo }) {
       />
       <Typography
         variant="body1"
-        style={{ 
-          textDecoration: todo && (todo.completed ? "line-through" : null)
+        style={{
+          textDecoration: todo && (todo.completed ? "line-through" : null),
         }}
       >
-        { todo && todo.task }
+        {todo && todo.task}
       </Typography>
       <IconButton>
-        <CloseIcon 
-        onClick={handleRemove}
-        />
+        <CloseIcon onClick={handleRemove} />
       </IconButton>
     </ListItem>
-  )
-};
+  );
+}
