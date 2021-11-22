@@ -7,6 +7,7 @@ import {
 import Chart from './components/pages/Chart';
 import Home from './components/pages/Home';
 import Tasks from './components/pages/Tasks';
+import Trick from  './components/juggling/Trick';
 // import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/chart" element={<Chart />}></Route>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/tasks" element={<Tasks />}></Route>
+          <Route exact path="/:numOfBalls/:trick" element={<Trick />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
