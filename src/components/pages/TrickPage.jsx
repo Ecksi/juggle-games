@@ -1,34 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Link, BrowserRouter as Router, Route, useParams } from "react-router-dom";
-import jugglingTricks from "../../assets/JugglingTricks/JugglingTricks.json"
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default () => {
-    const [allJugglingTricks, setAllJugglingTricks] = useState(jugglingTricks)
+export default function TrickPage() {
+  const { numBalls, trickName } = useParams();
+  const tricks = useSelector((state) => state.juggling);
+  const trick = tricks[numBalls].find((trick) => trick.name === trickName);
 
-    const {numBalls, trickName} = useParams()
-    
-
-    const [trick, setTrick] = useState();
- 
-    useEffect(() => {
-        let balltricks = allJugglingTricks[numBalls]
-        console.log(balltricks)
-        let index;
-        allJugglingTricks[numBalls].forEach((trick, i) => {
-            if (trick.name === trickName ){
-                index = i
-            }
-        })
-        console.log(index)
-        setTrick(balltricks[index])
-    }, [trickName])
-
-    console.log(trick)
-
-    return (
-        <div>
-            <h1>{trick?.name}</h1>
-            <h2>{trick?.id}</h2>
-        </div>
-    )
+  return (
+    <React.Fragment>
+      <h3>{trick.name}</h3>
+      <div>
+        <h4>Prerequisites:</h4>
+        {trick.prereq.map((req) => (
+          <p>{tricks[req[0]][req[1]]["name"]}</p>
+        ))}
+      </div>
+    </React.Fragment>
+  );
 }
