@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Button, TextField } from '@material-ui/core'
-import {v4 as uuidv4} from "uuid"
+import React, { useState } from "react";
+import { Button, TextField } from "@material-ui/core";
+import { v4 as uuidv4 } from "uuid";
 
 export default function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
-    id: '',
-    task: '',
-    completed: false
+    id: "",
+    task: "",
+    completed: false,
   });
 
   function generateId() {
@@ -24,14 +24,14 @@ export default function TodoForm({ addTodo }) {
       addTodo({
         ...todo,
         id: generateId(),
-      })
+      });
       // reset task input
-      setTodo({ ...todo, task: ''})
+      setTodo({ ...todo, task: "" });
     }
   }
 
   return (
-    <form className="todo-form" onSubmit={handleSubmit}> 
+    <form className="todo-form" onSubmit={handleSubmit}>
       <TextField
         label="Task"
         name="task"
@@ -41,5 +41,5 @@ export default function TodoForm({ addTodo }) {
       />
       <Button type="submit">Add Task</Button>
     </form>
-  )
+  );
 }

@@ -1,7 +1,5 @@
-import TodoApp from '../organisms/TodoApp';
+import TodoApp from "../organisms/TodoApp";
 
 export default function Tasks(props) {
-  return (
-    <TodoApp />
-  );
+  return <TodoApp />;
 }
