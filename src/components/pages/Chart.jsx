@@ -3,7 +3,7 @@ import { List } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 export default function Chart(props) {
-  const allBallTricks = useSelector((state) => state.jugglingTrick.value);
+  const allBallTricks = useSelector((state) => state.jugglingTrick);
 
   return (
     <div>
