@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: .75rem;
+  margin-right: 1rem;
+}
+
+.navigation > a {
+  margin-right: 1rem;
+  padding-bottom: .25rem;
+  align-self: center;
+  text-decoration: none;
+  font-size: 18px;
+}

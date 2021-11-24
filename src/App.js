@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/molecules/NavBar";
 import Chart from "./components/pages/Chart";
 import Home from "./components/pages/Home";
 import Tasks from "./components/pages/Tasks";
@@ -9,13 +10,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <nav>
-          <Link to="/">Home</Link>
-          <span> - </span>
-          <Link to="/chart">Chart</Link>
-          <span> - </span>
-          <Link to="/tasks">Tasks</Link>
-        </nav>
+        <NavBar />
         <hr />
         <Routes>
           <Route exact path="/chart" element={<Chart />}></Route>
