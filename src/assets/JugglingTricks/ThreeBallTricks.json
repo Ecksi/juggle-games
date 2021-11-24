@@ -8,28 +8,28 @@
     {
       "id": 1,
       "name": "Over Throw",
-      "prereq": [["3ball", 1]]
+      "prereq": [["threeBall", 1]]
     },
     {
       "id": 2,
       "name": "Jugglers Tennis",
       "animation": "https://libraryofjuggling.com/JugglingGifs/3balltricks/jugglerstennis.gif",
       "prereq": [
-        ["3ball", 1],
-        ["3ball", 0]
+        ["threeBall", 1],
+        ["threeBall", 0]
       ]
     },
     {
       "id": 3,
       "name": "Half Shower",
       "animation": "https://libraryofjuggling.com/JugglingGifs/3balltricks/halfshower.gif",
-      "prereq": [["3ball", 1]]
+      "prereq": [["threeBall", 1]]
     },
     {
       "id": 4,
       "name": "Reverse Cascade",
       "animation": "https://libraryofjuggling.com/JugglingGifs/3balltricks/reversecascade.gif",
-      "prereq": [["3ball", 1]]
+      "prereq": [["threeBall", 1]]
     },
     {
       "id": 5,
@@ -48,8 +48,8 @@
       "name": "Shower",
       "animation": "https://libraryofjuggling.com/JugglingGifs/3balltricks/shower.gif",
       "prereq": [
-        ["3ball", 3],
-        ["3ball", 9]
+        ["threeBall", 3],
+        ["threeBall", 9]
       ]
     }
 ]

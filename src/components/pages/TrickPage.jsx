@@ -29,14 +29,22 @@ export default function TrickPage() {
       <h2>Animation</h2>
       <img alt="Juggling animation" src={trick.animation}></img>
       <h2>Prerequisites</h2>
-      {/* <List>
-        {trick.prereq.map((trickTuple) => (
-          <Trick
-            trick={allJugglingTricks[trickTuple[0]][trickTuple[1]]}
-            numBalls={trickTuple[0]}
-          />
-        ))}
-      </List> */}
+      <List>
+        {trick.prereq.map((trickTuple) => {
+            if(trickTuple[0] === "threeBall"){
+              return (<Trick
+              trick={threeBallTricks[trickTuple[1]]}
+              numBalls={trickTuple[0]}
+            /> )  
+            } else if (trickTuple[0] === "fourBall"){
+              return (<Trick
+              trick={fourBallTricks[trickTuple[1]]}
+              numBalls={trickTuple[0]}
+            />)
+            }
+            return null
+        })}
+      </List>
     </div>
   );
 }
