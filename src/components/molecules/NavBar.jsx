@@ -1,14 +1,22 @@
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Avatar from "../atoms/Avatar";
 import "./NavBar.css"
 
 export default function NavBar() {
+  const [value, setValue] = useState("home");
+
   return (
-    <nav className="navigation">
-      <Link to="/">Home</Link>
-      <Link to="/chart">Chart</Link>
-      <Link to="/tasks">Tasks</Link>
-      <Avatar />
-    </nav>
+    <div class="nav-background">
+      <div className="circle"></div>
+      <span className="line-start"></span>
+      <span className="diagonal"></span>
+      <nav className="navigation">
+        <Link to="/" className={`${value === "home" ? 'active-link' : null}`} onClick={() => {setValue("home")}}>Home</Link>
+        <Link to="/chart" className={`${value === "chart" ? 'active-link' : null}`} onClick={() => {setValue("chart")}}>Chart</Link>
+        <Link to="/tasks" className={` ${value === "tasks" ? 'active-link' : null}`} onClick={() => {setValue("tasks")}}>Tasks</Link>
+        <Avatar />
+      </nav>
+    </div>
   );
 }
