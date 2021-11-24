@@ -7,7 +7,7 @@ export default function NavBar() {
   const [value, setValue] = useState("home");
 
   return (
-    <div class="nav-background">
+    <div class="nav-spacing">
       <div className="circle"></div>
       <span className="line-start"></span>
       <span className="diagonal"></span>
