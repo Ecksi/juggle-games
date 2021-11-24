@@ -6,10 +6,22 @@ import { List } from "@material-ui/core";
 
 export default function TrickPage() {
   const { numBalls, trickName } = useParams();
-  const allJugglingTricks = useSelector((state) => state.jugglingTrick);
-  const trick = allJugglingTricks[numBalls].find(
+  
+  const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
+  const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
+
+  let trick
+
+  if (numBalls === "threeBall") {
+   trick = threeBallTricks.find(
     (trick) => trick.name === trickName
   );
+  }
+  else if (numBalls === "fourBall") {
+    trick = fourBallTricks.find(
+      (trick) => trick.name === trickName
+    );
+  }
 
   return (
     <div>
@@ -17,14 +29,14 @@ export default function TrickPage() {
       <h2>Animation</h2>
       <img alt="Juggling animation" src={trick.animation}></img>
       <h2>Prerequisites</h2>
-      <List>
+      {/* <List>
         {trick.prereq.map((trickTuple) => (
           <Trick
             trick={allJugglingTricks[trickTuple[0]][trickTuple[1]]}
             numBalls={trickTuple[0]}
           />
         ))}
-      </List>
+      </List> */}
     </div>
   );
 }

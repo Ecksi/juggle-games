@@ -15,7 +15,7 @@ export default function NavBar() {
         <Link to="/" className={`${value === "home" ? 'active-link' : null}`} onClick={() => {setValue("home")}}>Home</Link>
         <Link to="/chart" className={`${value === "chart" ? 'active-link' : null}`} onClick={() => {setValue("chart")}}>Chart</Link>
         <Link to="/tasks" className={` ${value === "tasks" ? 'active-link' : null}`} onClick={() => {setValue("tasks")}}>Tasks</Link>
-        <Link to="/addTrick" className={` ${value === "tasks" ? 'active-link' : null}`} onClick={() => {setValue("addTrick")}}>Add Trick</Link>
+        <Link to="/addTrick" className={` ${value === "addTrick" ? 'active-link' : null}`} onClick={() => {setValue("addTrick")}}>Add Trick</Link>
         <Avatar />
       </nav>
     </div>
