@@ -26,8 +26,8 @@ export default function TrickPage() {
   return (
     <div>
       <h1>{trick.name}</h1>
-      <h2>Animation</h2>
-      <img alt="Juggling animation" src={trick.animation}></img>
+      
+      {trick.animation && <div><h2>Animation</h2> <img alt="Juggling animation" src={trick.animation}></img></div>}
       <h2>Prerequisites</h2>
       <List>
         {trick.prereq.map((trickTuple) => {
