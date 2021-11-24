@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Chart from "./components/pages/Chart";
 import Home from "./components/pages/Home";
 import Tasks from "./components/pages/Tasks";
+import AddTrick from "./components/pages/AddTrick.jsx"
 import TrickPage from "./components/pages/TrickPage";
 
 function App() {
@@ -15,12 +16,15 @@ function App() {
           <Link to="/chart">Chart</Link>
           <span> - </span>
           <Link to="/tasks">Tasks</Link>
+          <span> - </span>
+          <Link to="/addTrick">Add Trick</Link>
         </nav>
         <hr />
         <Routes>
           <Route exact path="/chart" element={<Chart />}></Route>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/tasks" element={<Tasks />}></Route>
+          <Route exact path="/addTrick" element={<AddTrick />}></Route>
           <Route
             path="/jugglingTricks/:numBalls/:trickName"
             element={<TrickPage />}
