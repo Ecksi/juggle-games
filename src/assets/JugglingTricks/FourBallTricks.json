@@ -1,6 +1,7 @@
 [
     {
         "id": 0,
+        "balls": 4,
         "name": "Fountain",
         "prereq": [
             ["threeBall", 4],
