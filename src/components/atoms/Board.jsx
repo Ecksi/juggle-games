@@ -1,7 +1,6 @@
 import React from "react"
 import Square from "./Square"
 import Knight from "./Knight"
-import {canMoveKnight, moveKnight} from './Game'
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -31,8 +30,22 @@ export default function Board() {
 
   function handleSquareClick(toX, toY) {
     console.log("In handle click")
-    console.log(toX +"," + toY)
-    setKnightPosition([toX, toY])
+    if (canMoveKnight(toX, toY)) {
+      console.log("In canMove")
+      console.log(toX +"," + toY)
+      setKnightPosition([toX, toY])
+    }
+  }
+
+  function canMoveKnight(toX, toY) {
+    const [x, y] = knightPosition
+    const dx = toX - x
+    const dy = toY - y
+  
+    return (
+      (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
+      (Math.abs(dx) === 1 && Math.abs(dy) === 2)
+    )
   }
 
   const squares = []
