@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
+import TodoFilter from "../atoms/TodoFilter";
 import TodoForm from "../molecules/TodoForm";
 import TodoList from "../atoms/TodoList";
 import Fable from "../../assets/catPictures/cosmicFable.jpeg";
@@ -10,6 +11,7 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
 export default function TodoApp() {
   const [todos, setTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState([todos])
 
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -23,8 +25,16 @@ export default function TodoApp() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
+  useEffect(() => {
+    filterTodos()
+  }, [todos]);
+
   function addTodo(todo) {
     setTodos([todo, ...todos]);
+  }
+
+  function removeTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   function toggleComplete(id) {
@@ -33,6 +43,7 @@ export default function TodoApp() {
         if (todo.id === id) {
           return {
             ...todo,
+            status: 'complete',
             completed: !todo.completed,
           };
         } else {
@@ -42,8 +53,27 @@ export default function TodoApp() {
     );
   }
 
-  function removeTodo(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  function setHighPriority(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            status: `${todo.status === 'high-priority' ? 'incomplete' : 'high-priority'}`
+          };
+        } else {
+          return todo;
+        }
+      })
+    )
+  }
+
+  function filterTodos(status='all') {
+    if (status === "all") {
+      setFilteredTodos(todos)
+    } else {
+      setFilteredTodos(todos.filter((todo) => todo.status === status))
+    }
   }
 
   return (
@@ -55,10 +85,12 @@ export default function TodoApp() {
         </Typography>
         <img alt="Luna" className="cat-pic" src={Luna} />
       </header>
+      <TodoFilter filterTodos={filterTodos} />
       <TodoForm addTodo={addTodo} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         toggleComplete={toggleComplete}
+        setHighPriority={setHighPriority}
         removeTodo={removeTodo}
       />
     </div>

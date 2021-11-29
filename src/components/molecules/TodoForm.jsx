@@ -6,6 +6,7 @@ export default function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
     id: "",
     task: "",
+    status: "incomplete",
     completed: false,
   });
 
