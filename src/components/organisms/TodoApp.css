@@ -13,6 +13,28 @@
   width: 90px;
 }
 
+/* TODO Filter styles */
+.todo-filter {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.todo-filter-types {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.todo-filter-types > li {
+  margin-right: 18px;
+  cursor: pointer;
+}
+
+.todo-filter-types > li:hover {
+  text-decoration: underline;
+}
+
 /* TODO Form styles */
 .todo-form {
   display: flex;
@@ -32,5 +54,10 @@
 
 /* TODO List Styles */
 .todo-wrapper > ul {
-  margin-left: 28rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiListItem-root.MuiListItem-gutters {
+  justify-content: center;
 }
