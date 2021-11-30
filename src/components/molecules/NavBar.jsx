@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Avatar from "../atoms/Avatar";
+import staffIcon from "../../assets/icons/icon-fire-staff-bw.png";
 import "./NavBar.css"
 
 export default function NavBar() {
@@ -8,7 +9,9 @@ export default function NavBar() {
 
   return (
     <div className="nav-spacing">
-      <div className="circle"></div>
+      <div className="circle">
+        <img className="nav-icon" src={staffIcon} alt="Fire Staff Icon" />
+      </div>
       <span className="line-start"></span>
       <span className="diagonal"></span>
       <nav className="navigation">
