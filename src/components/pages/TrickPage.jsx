@@ -31,12 +31,12 @@ export default function TrickPage() {
       <h2>Prerequisites</h2>
       <List>
         {trick.prereq.map((trickTuple) => {
-            if(trickTuple[0] === "threeBall"){
+            if(trickTuple[0] === 3){
               return (<Trick
               trick={threeBallTricks[trickTuple[1]]}
               numBalls={trickTuple[0]}
             /> )  
-            } else if (trickTuple[0] === "fourBall"){
+            } else if (trickTuple[0] === 4){
               return (<Trick
               trick={fourBallTricks[trickTuple[1]]}
               numBalls={trickTuple[0]}

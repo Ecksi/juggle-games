@@ -62,10 +62,10 @@ export default function AddTrick(){
 
         if (updatedCheckedState[index]){
             newPrereqs = prereqs?.slice()
-            newPrereqs.push([convertBallNumToText(preTrick.balls), preTrick.id])
+            newPrereqs.push([preTrick.balls, preTrick.id])
         } else {
             newPrereqs = prereqs?.filter((tuple) => {
-                if (tuple[0] !== convertBallNumToText(preTrick.balls) && tuple[1] !== preTrick.id) {
+                if (tuple[0] !== preTrick.balls && tuple[1] !== preTrick.id) {
                     return tuple
                 }
             })
