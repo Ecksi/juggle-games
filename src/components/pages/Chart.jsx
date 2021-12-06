@@ -1,8 +1,17 @@
 import Trick from "../juggling/Trick";
 import { List } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchJugglingTricksData } from "../../reducers/jugglingTrickSlice";
 
 export default function Chart(props) {
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(fetchJugglingTricksData())
+  }, [])
+
   const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
   const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
 
@@ -10,7 +19,7 @@ export default function Chart(props) {
     <div>
       <h3>3-ball tricks</h3>
       <List>
-        {threeBallTricks.map((trick) => (
+        {!!threeBallTricks && threeBallTricks.map((trick) => (
           <Trick trick={trick} numBalls={"threeBall"} />
         ))}
       </List>
