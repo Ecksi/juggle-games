@@ -4,8 +4,8 @@
         "balls": 4,
         "name": "Fountain",
         "prereq": [
-            ["threeBall", 4],
-            ["threeBall", 5]
+            [3, 4],
+            [3, 5]
         ]
     }
 ]

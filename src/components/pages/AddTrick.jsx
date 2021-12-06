@@ -4,14 +4,17 @@ import { addThreeBallTrick, addFourBallTrick  } from "../../reducers/jugglingTri
 import { useSelector } from "react-redux";
 
 export default function AddTrick(){
-
+    const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
+    const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
     
     const [newTrick, setNewTrick] = useState('new trick');
     const [numBalls, setNumBalls] = useState('threeBall');
     const [animationLink, setAnimationLink] = useState('');
-    //const [prereq, setPrereq] = useState([]);
-    const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
-    const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
+    const [prereqCheckedState, setPrereqCheckedState] = useState(
+        new Array(threeBallTricks.length).fill(false)
+    );
+    const [prereqs, setPrereqs] = useState([])
+    
 
     const dispatch = useDispatch()
 
@@ -27,7 +30,7 @@ export default function AddTrick(){
                 "balls": 3,
                 "name": newTrick,
                 "animation": animationLink,
-                "prereq": []
+                "prereq": prereqs
             }
 
             dispatch(addThreeBallTrick(trick))
@@ -38,7 +41,7 @@ export default function AddTrick(){
                 "balls": -1,
                 "name": newTrick,
                 "animation": animationLink,
-                "prereq": []
+                "prereq": prereqs
             }
 
             dispatch(addFourBallTrick(trick))
@@ -46,6 +49,41 @@ export default function AddTrick(){
         
     }
 
+    const handleThreeBallOnChange = (index) => {
+        const preTrick = threeBallTricks[index]
+        
+        const updatedCheckedState = prereqCheckedState.map((item, ip) => 
+            ip === index ? !item : item
+        );
+        setPrereqCheckedState(updatedCheckedState);
+
+        let newPrereqs;
+        console.log(prereqCheckedState)
+
+        if (updatedCheckedState[index]){
+            newPrereqs = prereqs?.slice()
+            newPrereqs.push([preTrick.balls, preTrick.id])
+        } else {
+            newPrereqs = prereqs?.filter((tuple) => {
+                if (tuple[0] !== preTrick.balls && tuple[1] !== preTrick.id) {
+                    return tuple
+                }
+            })
+        }
+        setPrereqs(newPrereqs)
+
+        
+    }
+
+
+    const convertBallNumToText = (value) => {
+        if (value === 3) {
+            return "threeBall"
+        }
+        if (value === 4) {
+            return "fourBall"
+        }
+    }
 
     return (
         <div>
@@ -68,10 +106,23 @@ export default function AddTrick(){
                     value = {animationLink}
                     onChange = {(e) => setAnimationLink(e.target.value)}
                 />
+                <h3>Select prerequisites</h3>
+                {threeBallTricks.map((trick, index)=>(
+                    <div key={trick.balls + trick.name}>
+                    <input 
+                        type="checkbox" 
+                        value={trick} 
+                        name={trick.name}
+                        checked={prereqCheckedState[index]}
+                        onChange={() => handleThreeBallOnChange(index)}
+                        />{trick.name}
+                    </div>
+                ))}
                 <button>Add trick</button>
 
                 <p>{newTrick}</p>
                 <p>{numBalls}</p>
+                <p>{prereqs}</p>
             </form>
         </div>
     )
