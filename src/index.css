@@ -2,6 +2,7 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
+  background: rgb(122, 152, 238, 0.527);
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
