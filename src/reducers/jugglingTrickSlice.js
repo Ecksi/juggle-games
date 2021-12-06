@@ -1,11 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import threeBallTricksJson from "../assets/JugglingTricks/ThreeBallTricks.json"
 import fourBallTricksJson from "../assets/JugglingTricks/FourBallTricks.json"
+import { API_URL, HTTP_STATUS } from "../app/constants";
+import axios from "axios";
+
+export const fetchJugglingTricksData = createAsyncThunk(
+  'jugglingTricks/fetchJugglingTricksData',
+  async () => {
+    const { data } = await axios.get(`${API_URL}/api/v1/tricks/getAll`)
+    return data
+  }
+)
 
 export const jugglingTricksSlice = createSlice({
   name: "jugglingTricks",
   initialState: {
-      threeBall: threeBallTricksJson,
+      loading: null,
+      threeBall: null,
       fourBall: fourBallTricksJson,
   },
   reducers: {
@@ -15,6 +26,20 @@ export const jugglingTricksSlice = createSlice({
     addFourBallTrick(state, action) {
         state.fourBall.push(action.payload)
     },
+  },
+  extraReducers: {
+    [fetchJugglingTricksData.pending](state) {
+      state.loading = HTTP_STATUS.PENDING
+    },
+    [fetchJugglingTricksData.fulfilled](state, {payload}) {
+      state.loading = HTTP_STATUS.FULFILLED
+      state.threeBall = payload
+    },
+    [fetchJugglingTricksData.rejected](state, {payload}) {
+      state.loading = HTTP_STATUS.REJECT
+      //could add static here
+    }
+
   }
 });
 
