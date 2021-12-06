@@ -1,12 +1,23 @@
+import React from "react";
 import partyFable from "../../assets/catPictures/party-fable.gif";
 import partyLuna from "../../assets/catPictures/party-luna.gif";
 import partyVenli from "../../assets/catPictures/party-venli.gif";
 
-export default function MojiCat() {
+export default function MojiCat({ explosion }) {
   const mojiCats = [partyFable, partyLuna, partyVenli];
-  const randomCat = Math.floor(Math.random() * 3);
 
   return (
-    <img className="moji-cat" src={mojiCats[randomCat]} alt="moji cat meow meow" width="30" />
+    <img
+      className="moji-cat"
+      alt="moji cat meow meow"
+      src={mojiCats[Math.floor(Math.random() * 3)]}
+      width="30"
+      style={{
+        ['--xStart']: Math.random() * 98 + '%',
+        ['--xEnd']: Math.random() * 98 + '%',
+        ['--yStart']: Math.random() * 98 + '%',
+        ['--yEnd']: Math.random() * 98 + '%'
+      }}
+    />
   )
 }

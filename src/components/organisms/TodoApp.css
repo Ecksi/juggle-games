@@ -1,3 +1,10 @@
+:root {
+  --xStart: 0;
+  --xEnd: 97%;
+  --yStart: 0;
+  --yEnd: 97%;
+}
+
 /* TODO App styles */
 .todo-header {
   display: flex;
@@ -75,10 +82,15 @@
   animation: moveX 5.05s linear 0s infinite alternate, moveY 6.4s linear 0s infinite alternate;
 }
 
+.test-box {
+  background-color: darkblue;
+  height: var(--heightTest)
+}
+
 @keyframes moveX {
-  from { left: 0; } to { left: 98%; }
+  from { left: var(--xStart); } to { left: var(--xEnd); }
 }
 
 @keyframes moveY {
-  from { top: 0; } to { top: 97%; }
+  from { top: var(--yStart); } to { top: var(--yEnd); }
 }

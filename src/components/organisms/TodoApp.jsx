@@ -84,19 +84,38 @@ export default function TodoApp() {
     setCatMojis([...catMojis, <MojiCat />])
   }
 
+  function destroyAllCats() {
+    if (catMojis.length > 9) {
+      return (
+        <div className="todo-destroy-kittens">
+          <button onClick={explodeAllCats}>Destroy All Cats</button>
+        </div>
+      )
+    }
+  }
+
   function explodeAllCats() {
     alert('Are you sure you want to do this?')
     alert('Think of their cat families...')
     alert('Kittens without milk..')
-    setCatMojis([]);
+
+    let kittensLeft = catMojis.length - 1;
+
+    let katTimer = setInterval(() => {
+      if (kittensLeft <= 0) {
+        clearInterval(katTimer);
+      } 
+      
+      catMojis.splice(-1, 1)
+      setCatMojis([...catMojis])
+    }, 500)
+
+    return katTimer
   }
 
   return (
     <div className="todo-wrapper">
-      {/* Only show after 5-10 kittens have spawned */}
-      <div className="todo-destroy-kittens">
-        <button onClick={explodeAllCats}>Destroy All Cats</button>
-      </div>
+      {destroyAllCats()}
       <header className="todo-header">
         <img alt="Fable" className="cat-pic" src={Fable} />
         <Typography style={{ padding: 16 }} variant="h2">
@@ -113,7 +132,8 @@ export default function TodoApp() {
         removeTodo={removeTodo}
       />
       <div>
-        {catMojis.map(() => <MojiCat />)}
+        {catMojis.map((cat) => <MojiCat  />)
+        }
       </div>
     </div>
   );
