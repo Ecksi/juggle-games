@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import TodoFilter from "../atoms/TodoFilter";
-import TodoForm from "../molecules/TodoForm";
-import TodoList from "../atoms/TodoList";
-import MojiCat from "../atoms/MojiCat";
-import Fable from "../../assets/catPictures/cosmicFable.jpeg";
-import Luna from "../../assets/catPictures/groovyTuna.jpeg";
+import TodoFilter from "./TodoFilter";
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
+import MojiCat from "./MojiCat";
+import Fable from "../../assets/img/cats/cosmicFable.jpeg";
+import Luna from "../../assets/img/cats/groovyTuna.jpeg";
 import "./TodoApp.css";
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
@@ -24,11 +24,10 @@ export default function TodoApp() {
   }, []);
 
   useEffect(() => {
+    filterTodos();
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-  }, [todos]);
-
-  useEffect(() => {
-    filterTodos()
+    // filterTodos is only run on pageLoad, so it is not included in the list of dependencies- eslint disable to suppress warning
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos]);
 
   function addTodo(todo) {
@@ -47,7 +46,7 @@ export default function TodoApp() {
         if (todo.id === id) {
           return {
             ...todo,
-            status: 'complete',
+            status: "complete",
             completed: !todo.completed,
           };
         } else {
@@ -63,25 +62,27 @@ export default function TodoApp() {
         if (todo.id === id) {
           return {
             ...todo,
-            status: `${todo.status === 'high-priority' ? 'incomplete' : 'high-priority'}`
+            status: `${
+              todo.status === "high-priority" ? "incomplete" : "high-priority"
+            }`,
           };
         } else {
           return todo;
         }
       })
-    )
+    );
   }
 
-  function filterTodos(status='all') {
+  function filterTodos(status = "all") {
     if (status === "all") {
-      setFilteredTodos(todos)
+      setFilteredTodos(todos);
     } else {
-      setFilteredTodos(todos.filter((todo) => todo.status === status))
+      setFilteredTodos(todos.filter((todo) => todo.status === status));
     }
   }
 
   function addCatMoji() {
-    setCatMojis([...catMojis, <MojiCat />])
+    setCatMojis([...catMojis, <MojiCat />]);
   }
 
   function destroyAllCats() {
@@ -90,27 +91,27 @@ export default function TodoApp() {
         <div className="todo-destroy-kittens">
           <button onClick={explodeAllCats}>Destroy All Cats</button>
         </div>
-      )
+      );
     }
   }
 
   function explodeAllCats() {
-    alert('Are you sure you want to do this?')
-    alert('Think of their cat families...')
-    alert('Kittens without milk..')
+    alert("Are you sure you want to do this?");
+    alert("Think of their cat families...");
+    alert("Kittens without milk..");
 
     let kittensLeft = catMojis.length - 1;
 
     let katTimer = setInterval(() => {
       if (kittensLeft <= 0) {
         clearInterval(katTimer);
-      } 
-      
-      catMojis.splice(-1, 1)
-      setCatMojis([...catMojis])
-    }, 500)
+      }
 
-    return katTimer
+      catMojis.splice(-1, 1);
+      setCatMojis([...catMojis]);
+    }, 500);
+
+    return katTimer;
   }
 
   return (
@@ -132,8 +133,9 @@ export default function TodoApp() {
         removeTodo={removeTodo}
       />
       <div>
-        {catMojis.map((cat) => <MojiCat  />)
-        }
+        {catMojis.map((cat) => (
+          <MojiCat key={Math.random() * 100} />
+        ))}
       </div>
     </div>
   );

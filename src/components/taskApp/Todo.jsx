@@ -2,7 +2,12 @@ import React from "react";
 import { Checkbox, IconButton, ListItem, Typography } from "@material-ui/core";
 import { Delete, PriorityHigh } from "@material-ui/icons";
 
-export default function Todo({ todo, toggleComplete, removeTodo, setHighPriority }) {
+export default function Todo({
+  todo,
+  toggleComplete,
+  removeTodo,
+  setHighPriority,
+}) {
   function handleRemove() {
     removeTodo(todo.id);
   }
@@ -17,29 +22,25 @@ export default function Todo({ todo, toggleComplete, removeTodo, setHighPriority
 
   return (
     <ListItem style={{ display: "flex", padding: 0 }}>
-      <Checkbox
-        checked={todo.completed}
-        onClick={handleCheckboxClick}
-      />
+      <Checkbox checked={todo.completed} onClick={handleCheckboxClick} />
       <Typography
         variant="body1"
         style={{
-          textDecoration: (todo.completed ? "line-through" : null),
-          width: 250
+          textDecoration: todo.completed ? "line-through" : null,
+          width: 250,
         }}
       >
         {todo.task}
       </Typography>
-      <IconButton disabled={todo.completed}>
+      <IconButton disabled={todo.completed} onClick={handlePriority}>
         <PriorityHigh
-          onClick={handlePriority} 
           style={{
-            color: todo.status === 'high-priority' ? 'red' : null,
+            color: todo.status === "high-priority" ? "red" : null,
           }}
         />
       </IconButton>
-      <IconButton>
-        <Delete onClick={handleRemove} />
+      <IconButton onClick={handleRemove}>
+        <Delete />
       </IconButton>
     </ListItem>
   );

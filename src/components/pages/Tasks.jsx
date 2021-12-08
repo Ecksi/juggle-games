@@ -1,5 +1,5 @@
-import TodoApp from "../organisms/TodoApp";
+import TodoApp from "../taskApp/TodoApp";
 
-export default function Tasks(props) {
+export default function Tasks() {
   return <TodoApp />;
 }

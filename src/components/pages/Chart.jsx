@@ -1,32 +1,36 @@
-import Trick from "../juggling/Trick";
-import { List } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchJugglingTricksData } from "../../reducers/jugglingTrickSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchJugglingTricksData } from "../../store/reducers/jugglingTrickSlice";
+import { List } from "@material-ui/core";
+import Trick from "../juggleApp/Trick";
 
 export default function Chart(props) {
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchJugglingTricksData())
-  }, [])
+    dispatch(fetchJugglingTricksData());
+    // temporarily disable eslint
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
   const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
 
+  // TODO: Replace Math.randoms w/ better key generation. Was having an issue w/ duplicate keys using uuid
+  
   return (
     <div>
       <h3>3-ball tricks</h3>
       <List>
-        {!!threeBallTricks && threeBallTricks.map((trick) => (
-          <Trick trick={trick} numBalls={"threeBall"} />
-        ))}
+        {!!threeBallTricks &&
+          threeBallTricks.map((trick) => (
+            <Trick key={Math.random() * 100} trick={trick} numBalls={"threeBall"} />
+          ))}
       </List>
       <h3>4-ball tricks</h3>
       <List>
         {fourBallTricks.map((trick) => (
-          <Trick trick={trick} numBalls={"fourBall"} />
+          <Trick key={Math.random() * 100} trick={trick} numBalls={"fourBall"} />
         ))}
       </List>
       <h3>5-ball tricks</h3>
