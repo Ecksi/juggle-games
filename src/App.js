@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NavBar from "./components/molecules/NavBar";
+import NavBar from "./components/layout/NavBar";
 import Home from "./components/pages/Home";
 import AddTrick from "./components/pages/AddTrick";
 import Chart from "./components/pages/Chart";
 import LearnToJuggle from "./components/pages/LearnToJuggle";
-import Tasks from "./components/pages/Tasks";
+import TaskApp from "./components/taskApp/TaskApp";
 import TrickPage from "./components/pages/TrickPage";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/addTrick" element={<AddTrick />} />
           <Route exact path="/chart" element={<Chart />} />
           <Route exact path="/learnToJuggle" element={<LearnToJuggle />} />
-          <Route exact path="/tasks" element={<Tasks />} />
+          <Route exact path="/tasks" element={<TaskApp />} />
           <Route
             path="/jugglingTricks/:numBalls/:trickName"
             element={<TrickPage />}
