@@ -3,7 +3,7 @@ import partyFable from "../../assets/img/cats/party-fable.gif";
 import partyLuna from "../../assets/img/cats/party-luna.gif";
 import partyVenli from "../../assets/img/cats/party-venli.gif";
 
-export default function MojiCat({ explosion }) {
+export default function TaskCat({ explosion }) {
   const mojiCats = [partyFable, partyLuna, partyVenli];
 
   return (

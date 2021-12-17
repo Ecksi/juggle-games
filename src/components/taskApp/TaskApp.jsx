@@ -1,94 +1,94 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import TodoFilter from "./TodoFilter";
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
-import MojiCat from "./MojiCat";
+import TaskFilter from "./TaskFilter";
+import TaskForm from "./TaskForm";
+import TaskList from "./TaskList";
+import TaskCat from "./TaskCat";
 import Fable from "../../assets/img/cats/cosmicFable.jpeg";
 import Luna from "../../assets/img/cats/groovyTuna.jpeg";
-import "./TodoApp.css";
+import "./TaskApp.css";
 
-const LOCAL_STORAGE_KEY = "react-todo-list-todos";
+const LOCAL_STORAGE_KEY = "react-task-list-tasks";
 
-export default function TodoApp() {
-  const [todos, setTodos] = useState([]);
-  const [filteredTodos, setFilteredTodos] = useState([todos]);
+export default function TaskApp() {
+  const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([tasks]);
   const [catMojis, setCatMojis] = useState([]);
 
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const storedTasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
-    if (storedTodos) {
-      setTodos(storedTodos);
+    if (storedTasks) {
+      setTasks(storedTasks);
     }
   }, []);
 
   useEffect(() => {
-    filterTodos();
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-    // filterTodos is only run on pageLoad, so it is not included in the list of dependencies- eslint disable to suppress warning
+    filterTasks();
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+    // filterTasks is only run on pageLoad, so it is not included in the list of dependencies- eslint disable to suppress warning
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [todos]);
+  }, [tasks]);
 
-  function addTodo(todo) {
-    setTodos([todo, ...todos]);
+  function addTask(task) {
+    setTasks([task, ...tasks]);
     addCatMoji();
   }
 
-  function removeTodo(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  function removeTask(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
     addCatMoji();
   }
 
   function toggleComplete(id) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
           return {
-            ...todo,
+            ...task,
             status: "complete",
-            completed: !todo.completed,
+            completed: !task.completed,
           };
         } else {
-          return todo;
+          return task;
         }
       })
     );
   }
 
   function setHighPriority(id) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
           return {
-            ...todo,
+            ...task,
             status: `${
-              todo.status === "high-priority" ? "incomplete" : "high-priority"
+              task.status === "high-priority" ? "incomplete" : "high-priority"
             }`,
           };
         } else {
-          return todo;
+          return task;
         }
       })
     );
   }
 
-  function filterTodos(status = "all") {
+  function filterTasks(status = "all") {
     if (status === "all") {
-      setFilteredTodos(todos);
+      setFilteredTasks(tasks);
     } else {
-      setFilteredTodos(todos.filter((todo) => todo.status === status));
+      setFilteredTasks(tasks.filter((task) => task.status === status));
     }
   }
 
   function addCatMoji() {
-    setCatMojis([...catMojis, <MojiCat />]);
+    setCatMojis([...catMojis, <TaskCat />]);
   }
 
   function destroyAllCats() {
     if (catMojis.length > 9) {
       return (
-        <div className="todo-destroy-kittens">
+        <div className="task-destroy-kittens">
           <button onClick={explodeAllCats}>Destroy All Cats</button>
         </div>
       );
@@ -115,26 +115,26 @@ export default function TodoApp() {
   }
 
   return (
-    <div className="todo-wrapper">
+    <div className="task-wrapper">
       {destroyAllCats()}
-      <header className="todo-header">
+      <header className="task-header">
         <img alt="Fable" className="cat-pic" src={Fable} />
         <Typography style={{ padding: 16 }} variant="h2">
           Task List
         </Typography>
         <img alt="Luna" className="cat-pic" src={Luna} />
       </header>
-      <TodoFilter filterTodos={filterTodos} />
-      <TodoForm addTodo={addTodo} />
-      <TodoList
-        todos={filteredTodos}
+      <TaskFilter filterTasks={filterTasks} />
+      <TaskForm addTask={addTask} />
+      <TaskList
+        tasks={filteredTasks}
         toggleComplete={toggleComplete}
         setHighPriority={setHighPriority}
-        removeTodo={removeTodo}
+        removeTask={removeTask}
       />
       <div>
         {catMojis.map((cat) => (
-          <MojiCat key={Math.random() * 100} />
+          <TaskCat key={Math.random() * 100} />
         ))}
       </div>
     </div>

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-export default function TodoFilter({ filterTodos }) {
+export default function TaskFilter({ filterTasks }) {
   const [activeFilter, setActiveFilter] = useState("all");
 
   function filterBy(e) {
     setActiveFilter(() => e.target.innerText.toLowerCase());
-    filterTodos(e.target.innerText.toLowerCase());
+    filterTasks(e.target.innerText.toLowerCase());
   }
 
   return (
-    <div className="todo-filter">
+    <div className="task-filter">
       <h4 style={{ marginBottom: 0 }}>Filter by:</h4>
-      <ol className="todo-filter-types">
+      <ol className="task-filter-types">
         <li
           onClick={filterBy}
           className={activeFilter === "high-priority" ? activeFilter : undefined}

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 
-export default function TodoForm({ addTodo }) {
-  const [todo, setTodo] = useState({
+export default function TaskForm({ addTask }) {
+  const [task, setTask] = useState({
     id: "",
     task: "",
     status: "incomplete",
@@ -15,29 +15,29 @@ export default function TodoForm({ addTodo }) {
   }
 
   function handleInputChange(e) {
-    setTodo({ ...todo, task: e.target.value });
+    setTask({ ...task, task: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (todo.task.trim()) {
-      addTodo({
-        ...todo,
+    if (task.task.trim()) {
+      addTask({
+        ...task,
         id: generateId(),
       });
       // reset task input
-      setTodo({ ...todo, task: "" });
+      setTask({ ...task, task: "" });
     }
   }
 
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+    <form className="task-form" onSubmit={handleSubmit}>
       <TextField
         label="Task"
         name="task"
         type="text"
-        value={todo.task}
+        value={task.task}
         onChange={handleInputChange}
       />
       <Button type="submit">Add Task</Button>
