@@ -1,9 +1,12 @@
+import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addThreeBallTrick,
   addFourBallTrick,
 } from "../../store/reducers/jugglingTrickSlice";
+
+import { API_URL } from "../../app/constants";
 
 export default function AddTrick() {
   const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
@@ -44,9 +47,11 @@ export default function AddTrick() {
 
       dispatch(addFourBallTrick(trick));
     }
+    console.log(trick)
+    axios.post(`${API_URL}/api/v1/tricks/addTrick`, trick)
   };
 
-  const handleThreeBallOnChange = (index) => {
+  const handlePreReqOnChange = (index) => {
     const preTrick = threeBallTricks[index];
 
     const updatedCheckedState = prereqCheckedState.map((item, ip) =>
@@ -54,16 +59,16 @@ export default function AddTrick() {
     );
     setPrereqCheckedState(updatedCheckedState);
 
-    let newPrereqs;
+    let newPrereqs = [];
 
     // how can this be written to fix filter needs return value error
     if (updatedCheckedState[index]) {
       newPrereqs = prereqs?.slice();
-      newPrereqs.push([preTrick.balls, preTrick.id]);
+      newPrereqs.push(preTrick.id);
     } else {
-      newPrereqs = prereqs?.filter((tuple) => {
-        if (tuple[0] !== preTrick.balls && tuple[1] !== preTrick.id) {
-          return tuple;
+      newPrereqs = prereqs?.filter(value => {
+        if (value !== preTrick.id) {
+          return value;
         }
         // only here to remove error. refactor~
         return null;
@@ -112,7 +117,7 @@ export default function AddTrick() {
               value={trick}
               name={trick.name}
               checked={prereqCheckedState[index]}
-              onChange={() => handleThreeBallOnChange(index)}
+              onChange={() => handlePreReqOnChange(index)}
             />
             {trick.name}
           </div>
