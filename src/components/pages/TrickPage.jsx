@@ -18,9 +18,21 @@ export default function TrickPage() {
     trick = fourBallTricks.find((trick) => trick.name === trickName);
   }
 
+  function convertNumBalls( value) {
+    if (value === 3) {
+      return "threeBall"
+    }
+    else if (value === 4) {
+      return "fourBall"
+    }
+    else if (value === 5) {
+      return "fiveBall"
+    }
+  }
+
   return (
     <div>
-      <h1>{trick.name}</h1>
+      <h1>{trick?.name}</h1>
 
       {trick.animation && (
         <div>
@@ -30,23 +42,13 @@ export default function TrickPage() {
       )}
       <h2>Prerequisites</h2>
       <List>
-        {trick.prereq.map((trickTuple) => {
-          if (trickTuple[0] === 3) {
+        {trick.prereq.map(value => {
             return (
               <Trick
-                trick={threeBallTricks[trickTuple[1]]}
-                numBalls={trickTuple[0]}
+                trick={threeBallTricks[value]}
+                numBalls={convertNumBalls(trick.balls)}
               />
             );
-          } else if (trickTuple[0] === 4) {
-            return (
-              <Trick
-                trick={fourBallTricks[trickTuple[1]]}
-                numBalls={trickTuple[0]}
-              />
-            );
-          }
-          return null;
         })}
       </List>
     </div>
