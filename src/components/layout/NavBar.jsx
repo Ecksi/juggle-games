@@ -71,7 +71,7 @@ export default function NavBar() {
         >
           Learn To Juggle
         </Link>
-        <Avatar class="avatar-icon" alt="Avatar Icon" src={avatarIcon} />
+        <Avatar className="avatar-icon" alt="Avatar Icon" src={avatarIcon} />
       </nav>
     </div>
   );
