@@ -18,7 +18,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<App />} >
-            <Route index element={Home} />
+            <Route index element={<Home />} />
             <Route exact path="/addTrick" element={<AddTrick />} />
             <Route exact path="/chart" element={<Chart />} />
             <Route exact path="/learnToJuggle" element={<LearnToJuggle />} />
@@ -26,8 +26,15 @@ ReactDOM.render(
             <Route
               path="/jugglingTricks/:numBalls/:trickName"
               element={<TrickPage />}
-            />
-            
+            />            
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+              </main>
+            }
+          />
           </Route>
         </Routes>
     </BrowserRouter>
