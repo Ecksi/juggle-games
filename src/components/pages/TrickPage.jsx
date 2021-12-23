@@ -35,10 +35,10 @@ export default function TrickPage() {
       <h1>{trick?.name}</h1>
 
       {trick.animation && (
-        <div>
+        <>
           <h2>Animation</h2>{" "}
           <img alt="Juggling animation" src={trick.animation}></img>
-        </div>
+        </>
       )}
       <h2>Prerequisites</h2>
       <List>

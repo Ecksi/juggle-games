@@ -133,8 +133,8 @@ export default function TaskApp() {
         removeTask={removeTask}
       />
       <div>
-        {catMojis.map((cat) => (
-          <TaskCat key={Math.random() * 100} />
+        {catMojis.map((cat, i) => (
+          <TaskCat key={i} />
         ))}
       </div>
     </div>
