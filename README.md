@@ -1,30 +1,41 @@
-# Juggle juggle juggle
+# Juggle Games
+<img src="https://cdn.dribbble.com/users/980582/screenshots/2497653/octo-uni_800x600.gif" width="100px"><span style="vertical-align:150%; padding-left: 12px">An app to track and share your juggling progression</span>
 
-> Todo
-- replace icons, logo / update manifest.json, index.html
-- prepare next round of project tasks
-- add tests
-- tricks 
+## [Taskboard](https://github.com/Ecksi/juggle-games/projects/1)
 
-10/21
-- Make things slightly prettier
-    - add animations
-    - for requirements trick buttons 
-- track trick progress
-    - done via local storage for now
-    - flash, qualify, consistent
+### To Run
+- start server (instructions can be found on the server repo readme)
+- npm i
+- npm run start
 
-- user login
-    gcp storage for user information firestore, firebase auth for login
+### Server Repo
+- https://github.com/trual/JuggleGame
+### App Structure
+> Front-end
+- <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="25"><span style="vertical-align:15%; padding-left:12px"> React</span>
+- <img src="https://cdn.freebiesupply.com/logos/large/2x/react-router-logo-png-transparent.png" width="25"><span style="vertical-align:15%; padding-left:12px"> React Router</span>
+- <img src="https://cdn.freebiesupply.com/logos/large/2x/redux-logo-png-transparent.png" width="25"><span style="vertical-align:15%; padding-left:12px"> Redux</span>
+- <img src="https://cdn.freebiesupply.com/logos/large/2x/material-ui-logo-png-transparent.png" width="25"><span style="vertical-align:15%; padding-left:12px"> MaterialUI</span>
 
-- user upload for verification
+> Backend
+- <img src="https://cdn.freebiesupply.com/logos/large/2x/java-14-logo-png-transparent.png" width="25"><span style="vertical-align:15%; padding-left:12px">Java</span>
+- <img src="https://cdn.freebiesupply.com/logos/large/2x/spring-3-logo-png-transparent.png" width="25"><span style="vertical-align:15%; padding-left:12px">Spring</span>
+- <img src="https://cdn.freebiesupply.com/logos/large/2x/postgresql-logo-png-transparent.png" width="25"><span style="vertical-align:15%; padding-left:12px">Postgres</span>
 
-- add new tricks
-    - our jugglingtricks.json will have to be migrated to a database 
+### Color Palette
+- ![#461E52](https://via.placeholder.com/15/461E52/000000?text=+) `#461E52 || rgb(70, 30, 82)`
+- ![#DD517E](https://via.placeholder.com/15/DD517E/000000?text=+) `#DD517E || rgb(221, 81, 126)`
+- ![#E58E35](https://via.placeholder.com/15/E58E35/000000?text=+) `#E58E35 || rgb(229, 142, 53)`
+- ![#556CC9](https://via.placeholder.com/15/556CC9/000000?text=+) `#556CC9 || rgb(85, 108, 201)`
+- ![#7A98EE](https://via.placeholder.com/15/7A98EE/000000?text=+) `#7A98EE || rgb(122, 152, 238)`
 
-Color Palette
-- #461e52 || rgb(70,30,82) - purplish
-- #dd517e || rgb(221,81,126) - pinkish
-- #e58e35 || rgb(229,142,53) - orangeish
-- #556cc9 || rgb(85,108,201) - d. bluish
-- #7a98ee || rgb(122,152,238) - l. bluish
+### Trick Template
+```js
+trick = {
+  id:        Number,
+  balls:     Number,
+  name:      String,
+  animation: String,
+  prereq:    Array
+}
+```
