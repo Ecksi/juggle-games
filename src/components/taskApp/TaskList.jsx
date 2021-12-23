@@ -9,10 +9,9 @@ export default function TaskList({
 }) {
   return (
     <List>
-      {tasks.map((task) => (
+      {tasks.map((task, i) => (
         <Task
-          //TODO: Replace Math.randoms w/ better key generation. Was having an issue w/ duplicate keys using uuid
-          key={Math.random() * 1000}
+          key={i}
           task={task}
           toggleComplete={toggleComplete}
           setHighPriority={setHighPriority}

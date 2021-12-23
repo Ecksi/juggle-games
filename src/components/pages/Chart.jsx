@@ -9,28 +9,25 @@ export default function Chart(props) {
 
   useEffect(() => {
     dispatch(fetchJugglingTricksData());
-    // temporarily disable eslint
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
   const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
-
-  // TODO: Replace Math.randoms w/ better key generation. Was having an issue w/ duplicate keys using uuid
   
   return (
     <div>
       <h3>3-ball tricks</h3>
       <List>
         {!!threeBallTricks &&
-          threeBallTricks.map((trick) => (
-            <Trick key={Math.random() * 100} trick={trick} numBalls={"threeBall"} />
+          threeBallTricks.map((trick, i) => (
+            <Trick key={i} trick={trick} numBalls={"threeBall"} />
           ))}
       </List>
       <h3>4-ball tricks</h3>
       <List>
-        {fourBallTricks.map((trick) => (
-          <Trick key={Math.random() * 100} trick={trick} numBalls={"fourBall"} />
+        {fourBallTricks.map((trick, i) => (
+          <Trick key={i} trick={trick} numBalls={"fourBall"} />
         ))}
       </List>
       <h3>5-ball tricks</h3>
