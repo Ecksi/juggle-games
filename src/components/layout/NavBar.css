@@ -123,6 +123,7 @@
   top: 40px;
   left: 55%;
   width: 100%;
+  z-index: -1;
 }
 
 .navigation {
@@ -138,9 +139,17 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  z-index: 10;
 }
 
 .active-link {
   border-bottom: 2px solid #7a98ee;
+}
+
+.avatar-icon > img {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #556CC9;
+  border-radius: 50%;
+  padding: 4px;
+  cursor: pointer;
 }

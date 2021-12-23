@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import Avatar from "./Avatar";
+import { Avatar } from '@material-ui/core';
+import avatarIcon from "../../assets/img/icons/icon-4b-juggler-color.png";
+// import Avatar from "./Avatar";
 import staffIcon from "../../assets/img/icons/icon-fire-staff-bw.png";
 import "./NavBar.css";
-import { useLocation } from "react-router";
-import { useEffect } from "react";
 
 export default function NavBar() {
   const [value, setValue] = useState("home");
 
-  let location = useLocation()
+  let location = useLocation();
 
   useEffect(() => {
-      
-      const path = location.pathname.slice(1)
-      setValue(path)
-  }, [location.pathname])
+      const path = location.pathname.slice(1);
 
+      setValue(path)
+  }, [location.pathname]);
 
   return (
     <div className="nav-spacing">
@@ -71,7 +71,7 @@ export default function NavBar() {
         >
           Learn To Juggle
         </Link>
-        <Avatar />
+        <Avatar class="avatar-icon" alt="Avatar Icon" src={avatarIcon} />
       </nav>
     </div>
   );
