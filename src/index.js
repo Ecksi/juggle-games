@@ -12,6 +12,10 @@ import LearnToJuggle from "./components/pages/LearnToJuggle";
 import TaskApp from "./components/taskApp/TaskApp";
 import TrickPage from "./components/pages/TrickPage";
 import "./index.css";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 ReactDOM.render(
   <Provider store={store}>

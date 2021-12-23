@@ -16,25 +16,28 @@
   text-align: center;
 }
 
-.task-filter-types {
+.MuiList-root {
   display: flex;
   justify-content: center;
-  list-style-type: none;
 }
 
-.task-filter-types > li {
+.MuiList-root .MuiListItem-root {
+  width: initial;
+}
+
+.MuiListItem-root {
   margin-right: 18px;
   cursor: pointer;
 }
 
-.task-filter-types > li:hover {
+.MuiListItem-root:hover {
   text-decoration: underline;
 }
 
-.high-priority,
-.complete,
-.incomplete,
-.all {
+.high-priority > div > span,
+.complete > div > span,
+.incomplete > div > span,
+.all > div > span {
   font-weight: bold;
 }
 
