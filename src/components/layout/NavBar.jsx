@@ -3,9 +3,20 @@ import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
 import staffIcon from "../../assets/img/icons/icon-fire-staff-bw.png";
 import "./NavBar.css";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 
 export default function NavBar() {
   const [value, setValue] = useState("home");
+
+  let location = useLocation()
+
+  useEffect(() => {
+      
+      const path = location.pathname.slice(1)
+      setValue(path)
+  }, [location.pathname])
+
 
   return (
     <div className="nav-spacing">
