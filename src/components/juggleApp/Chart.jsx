@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJugglingTricksData } from "../../store/reducers/jugglingTrickSlice";
 import { Accordion, AccordionDetails, AccordionSummary, List } from "@material-ui/core";
-import Trick from "../juggleApp/Trick";
+import Trick from "./Trick";
 
 export default function Chart(props) {
   const dispatch = useDispatch();
