@@ -1,9 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Box, Grid, Item, List, Paper, Typography } from "@material-ui/core";
+import { Box, List, Typography } from "@material-ui/core";
 import Trick from "./Trick";
-import "./JuggleApp.css"
 
 export default function TrickPage() {
   const { numBalls, trickName } = useParams();
@@ -32,52 +31,72 @@ export default function TrickPage() {
   }
 
   return (
-    <Box display="grid" gridTemplateColumns="repeat 12, 1fr" gridTemplateRows="50% 50%" gap={2}>
-      <Box gridColumn="span 6">
+    <div>
+    <Typography variant="h3" style={{marginTop: '50px'}}>Option 1</Typography>
+    <Box sx={{ 
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridTemplateAreas: 
+        `"header header"
+        "prereqs animation"`,
+      justifyItems: 'center'
+    }}>
+      <Box sx={{ gridArea: 'header' }}>
         <Typography variant="h3">{trick?.name}</Typography>
       </Box>
-      <Box gridColumn="span 6">
-        <Item>
-          {trick.animation && (
-            <>
-              <h2>Animation</h2>
-              <img alt="Juggling animation" src={trick.animation}></img>
-            </>
-          )}
-        </Item>
+      <Box sx={{ gridArea: 'prereqs' }}>
+        {trick.animation && (
+          <img alt="Juggling animation" src={trick.animation} />
+        )}
       </Box>
-      <Box gridColumn="span 6">
-        
+      <Box sx={{ gridArea: 'animation' }}>
+        <Typography variant="body1">
+          Prerequisites
+        </Typography>
+        <List>
+          {trick.prereq.map((value, i) => (
+            <Trick
+              key={i}
+              trick={threeBallTricks[value]}
+              numBalls={convertNumBalls(trick.balls)}
+            />
+          ))}
+        </List>
       </Box>
     </Box>
+    <Typography variant="h3" style={{marginTop: '50px'}}>Option 2</Typography>
+    <Box sx={{ 
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridTemplateAreas: 
+        `"header header"
+        "animation prereqs"`,
+      alignItems: 'center',
+      justifyItems: 'center'
+    }}>
+      <Box sx={{ gridArea: 'header' }}>
+        <Typography variant="h3">{trick?.name}</Typography>
+      </Box>
+      <Box sx={{ gridArea: 'prereqs' }}>
+        {trick.animation && (
+          <img alt="Juggling animation" src={trick.animation} />
+        )}
+      </Box>
+      <Box sx={{ gridArea: 'animation' }}>
+        <Typography variant="body1">
+          Prerequisites
+        </Typography>
+        <List>
+          {trick.prereq.map((value, i) => (
+            <Trick
+              key={i}
+              trick={threeBallTricks[value]}
+              numBalls={convertNumBalls(trick.balls)}
+            />
+          ))}
+        </List>
+      </Box>
+    </Box>
+    </div>
   );
 }
-
-{/* <Grid>
-          <Grid item>
-            <Typography variant="h3">
-              {trick?.name}
-            </Typography>
-          </Grid>
-          <Grid item>
-            {trick.animation && (
-              <>
-                <h2>Animation</h2>
-                <img alt="Juggling animation" src={trick.animation}></img>
-              </>
-            )}
-          </Grid>
-          <Grid item>
-            <Typography variant="body1">
-              Prerequisites
-            </Typography>
-            <List>
-              {trick.prereq.map(value => (
-                <Trick
-                  trick={threeBallTricks[value]}
-                  numBalls={convertNumBalls(trick.balls)}
-                />
-              ))}
-            </List>
-          </Grid>
-        </Grid> */}
