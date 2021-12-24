@@ -1,24 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import reportWebVitals from "./reportWebVitals";
-import store from "./store/store";
-import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import reportWebVitals from "./reportWebVitals";
+import App from "./App";
 import Home from "./components/pages/Home";
-import AddTrick from "./components/pages/AddTrick";
-import Chart from "./components/pages/Chart";
-import LearnToJuggle from "./components/pages/LearnToJuggle";
+import AddTrick from "./components/juggleApp/AddTrick";
+import Chart from "./components/juggleApp/Chart";
+import LearnToJuggle from "./components/juggleApp/LearnToJuggle";
+import TrickPage from "./components/juggleApp/TrickPage";
 import TaskApp from "./components/taskApp/TaskApp";
-import TrickPage from "./components/pages/TrickPage";
 import "./index.css";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<App />} >
-            <Route index element={Home} />
+            <Route index element={<Home />} />
             <Route exact path="/addTrick" element={<AddTrick />} />
             <Route exact path="/chart" element={<Chart />} />
             <Route exact path="/learnToJuggle" element={<LearnToJuggle />} />
@@ -26,8 +30,15 @@ ReactDOM.render(
             <Route
               path="/jugglingTricks/:numBalls/:trickName"
               element={<TrickPage />}
-            />
-            
+            />            
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+              </main>
+            }
+          />
           </Route>
         </Routes>
     </BrowserRouter>

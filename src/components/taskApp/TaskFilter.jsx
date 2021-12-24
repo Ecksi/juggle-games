@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+
 
 export default function TaskFilter({ filterTasks }) {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -10,33 +12,35 @@ export default function TaskFilter({ filterTasks }) {
 
   return (
     <div className="task-filter">
-      <h4 style={{ marginBottom: 0 }}>Filter by:</h4>
-      <ol className="task-filter-types">
-        <li
+      <Typography variant="h6" component="div">
+        Filter By:
+      </Typography>
+      <List className="task-filter-types" disablePadding dense>
+        <ListItem
           onClick={filterBy}
           className={activeFilter === "high-priority" ? activeFilter : undefined}
         >
-          High-Priority
-        </li>
-        <li
+          <ListItemText>High-Priority</ListItemText>
+        </ListItem>
+        <ListItem
           onClick={filterBy}
           className={activeFilter === "incomplete" ? activeFilter : undefined}
         >
-          Incomplete
-        </li>
-        <li
+          <ListItemText>Incomplete</ListItemText>
+        </ListItem>
+        <ListItem
           onClick={filterBy}
           className={activeFilter === "complete" ? activeFilter : undefined}
         >
-          Complete
-        </li>
-        <li
+          <ListItemText>Complete</ListItemText>
+        </ListItem>
+        <ListItem
           onClick={filterBy}
           className={activeFilter === "all" ? activeFilter : undefined}
         >
-          All
-        </li>
-      </ol>
+          <ListItemText>All</ListItemText>
+        </ListItem>
+      </List>
     </div>
   );
 }
