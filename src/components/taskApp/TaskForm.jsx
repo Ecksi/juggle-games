@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, FormControl, TextField } from "@material-ui/core";
 import { v4 as uuidv4 } from "uuid";
 
 export default function TaskForm({ addTask }) {
@@ -33,14 +33,17 @@ export default function TaskForm({ addTask }) {
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <TextField
-        label="Task"
-        name="task"
-        type="text"
-        value={task.task}
-        onChange={handleInputChange}
-      />
-      <Button type="submit">Add Task</Button>
+      <FormControl>
+        <TextField
+          label="Task"
+          name="task"
+          type="text"
+          color="red"
+          value={task.task}
+          onChange={handleInputChange}
+        />
+        <Button type="submit" variant="contained">Add Task</Button>
+      </FormControl>
     </form>
   );
 }
