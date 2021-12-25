@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import TaskFilter from "./TaskFilter";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
@@ -79,13 +79,13 @@ export default function TaskApp() {
 
 
   return (
-    <div className="task-wrapper">
+    <Box className="task-app">
       <header className="task-header">
-        <img alt="Fable" className="cat-pic" src={Fable} />
+        <img alt="Fable" className="task-cat" src={Fable} />
         <Typography style={{ padding: 16 }} variant="h2">
           Task List
         </Typography>
-        <img alt="Luna" className="cat-pic" src={Luna} />
+        <img alt="Luna" className="task-cat" src={Luna} />
       </header>
       <TaskFilter filterTasks={filterTasks} />
       <TaskForm addTask={addTask} />
@@ -95,6 +95,6 @@ export default function TaskApp() {
         setHighPriority={setHighPriority}
         removeTask={removeTask}
       />
-    </div>
+    </Box>
   );
 }

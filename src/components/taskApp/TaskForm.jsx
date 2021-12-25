@@ -38,7 +38,6 @@ export default function TaskForm({ addTask }) {
           label="Task"
           name="task"
           type="text"
-          color="red"
           value={task.task}
           onChange={handleInputChange}
         />

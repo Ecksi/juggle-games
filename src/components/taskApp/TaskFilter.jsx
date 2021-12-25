@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Box, List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
 
 export default function TaskFilter({ filterTasks }) {
@@ -11,7 +11,7 @@ export default function TaskFilter({ filterTasks }) {
   }
 
   return (
-    <div className="task-filter">
+    <Box sx={{display: "flex", flexDirection: "column", textAlign: "center"}} className="task-filter">
       <Typography variant="h6" component="div">
         Filter By:
       </Typography>
@@ -41,6 +41,6 @@ export default function TaskFilter({ filterTasks }) {
           <ListItemText>All</ListItemText>
         </ListItem>
       </List>
-    </div>
+    </Box>
   );
 }

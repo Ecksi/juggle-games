@@ -11,7 +11,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* MaterialUI Input Color Overrides */
+.MuiFormControl-root .MuiFormLabel-root {
+  color: rgb(85, 108, 201);
+}
+
+.MuiFormControl-root .MuiInput-underline:before {
+  border-bottom: 1px solid rgb(85, 108, 201);
+}
+
+.MuiFormControl-root .MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid rgba(85, 108, 201);
+}
+
+.MuiSvgIcon-root.MuiSelect-icon {
+  color: rgba(85, 108, 201);
+}
+
+/* MaterialUI Button Color Overrides */
+.MuiFormControl-root .MuiButtonBase-root {
+  background-color: rgb(70, 30, 82, 0.2);
+  color: rgb(85, 108, 201);
+  text-transform: none;
+}
+
+.MuiFormControl-root .MuiButtonBase-root:hover {
+  background-color: rgb(70, 30, 82, 0.3);
 }
