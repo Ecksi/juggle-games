@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Box, List, Typography } from "@material-ui/core";
 import Trick from "./Trick";
+import "./TrickApp.css";
 
-export default function TrickPage() {
+export default function OneTrick() {
   const { numBalls, trickName } = useParams();
 
   const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
