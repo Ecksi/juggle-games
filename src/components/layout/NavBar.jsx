@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 import avatarIcon from "../../assets/img/icons/icon-4b-juggler-color.png";
-// import Avatar from "./Avatar";
 import staffIcon from "../../assets/img/icons/icon-fire-staff-bw.png";
 import "./NavBar.css";
 
@@ -36,22 +35,13 @@ export default function NavBar() {
           Home
         </Link>
         <Link
-          to="/chart"
-          className={`${value === "chart" ? "active-link" : null}`}
+          to="/allTricks"
+          className={`${value === "allTricks" ? "active-link" : null}`}
           onClick={() => {
-            setValue("chart");
+            setValue("allTricks");
           }}
         >
-          Chart
-        </Link>
-        <Link
-          to="/tasks"
-          className={` ${value === "tasks" ? "active-link" : null}`}
-          onClick={() => {
-            setValue("tasks");
-          }}
-        >
-          Tasks
+          Tricks
         </Link>
         <Link
           to="/addTrick"
@@ -70,6 +60,15 @@ export default function NavBar() {
           }}
         >
           Learn To Juggle
+        </Link>
+        <Link
+          to="/tasks"
+          className={` ${value === "tasks" ? "active-link" : null}`}
+          onClick={() => {
+            setValue("tasks");
+          }}
+        >
+          Tasks
         </Link>
         <Avatar className="avatar-icon" alt="Avatar Icon" src={avatarIcon} />
       </nav>

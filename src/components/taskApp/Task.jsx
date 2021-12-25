@@ -1,6 +1,6 @@
 import React from "react";
-import { Checkbox, IconButton, ListItem, Typography } from "@material-ui/core";
-import { Delete, PriorityHigh } from "@material-ui/icons";
+import { Checkbox, IconButton, ListItem, Typography } from "@mui/material";
+import { Delete, PriorityHigh } from "@mui/icons-material";
 
 export default function Task({
   task,
