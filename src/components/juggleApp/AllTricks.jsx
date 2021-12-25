@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJugglingTricksData } from "../../store/reducers/jugglingTrickSlice";
 import { Accordion, AccordionDetails, AccordionSummary, Box, List, Typography } from "@mui/material";
 import Trick from "./TrickListItem";
+import "./TrickApp.css";
 
 export default function AllTricks(props) {
   const dispatch = useDispatch();
