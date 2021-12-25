@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Box, List, Typography } from "@material-ui/core";
-import Trick from "./Trick";
+import Trick from "./TrickListItem";
 import "./TrickApp.css";
 
 export default function OneTrick() {

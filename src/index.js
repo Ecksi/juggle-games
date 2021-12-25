@@ -9,7 +9,7 @@ import Home from "./components/pages/Home";
 import AddTrick from "./components/juggleApp/AddTrick";
 import AllTricks from "./components/juggleApp/AllTricks";
 import LearnToJuggle from "./components/juggleApp/LearnToJuggle";
-import TrickPage from "./components/juggleApp/TrickPage";
+import OneTrick from "./components/juggleApp/OneTrick";
 import TaskApp from "./components/taskApp/TaskApp";
 import "./index.css";
 import '@fontsource/roboto/300.css';
@@ -29,7 +29,7 @@ ReactDOM.render(
             <Route exact path="/tasks" element={<TaskApp />} />
             <Route
               path="/jugglingTricks/:numBalls/:trickName"
-              element={<TrickPage />}
+              element={<OneTrick />}
             />            
           <Route
             path="*"
