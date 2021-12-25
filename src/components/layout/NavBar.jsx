@@ -35,22 +35,13 @@ export default function NavBar() {
           Home
         </Link>
         <Link
-          to="/chart"
-          className={`${value === "chart" ? "active-link" : null}`}
+          to="/allTricks"
+          className={`${value === "allTricks" ? "active-link" : null}`}
           onClick={() => {
-            setValue("chart");
+            setValue("allTricks");
           }}
         >
-          Chart
-        </Link>
-        <Link
-          to="/tasks"
-          className={` ${value === "tasks" ? "active-link" : null}`}
-          onClick={() => {
-            setValue("tasks");
-          }}
-        >
-          Tasks
+          Tricks
         </Link>
         <Link
           to="/addTrick"
@@ -69,6 +60,15 @@ export default function NavBar() {
           }}
         >
           Learn To Juggle
+        </Link>
+        <Link
+          to="/tasks"
+          className={` ${value === "tasks" ? "active-link" : null}`}
+          onClick={() => {
+            setValue("tasks");
+          }}
+        >
+          Tasks
         </Link>
         <Avatar className="avatar-icon" alt="Avatar Icon" src={avatarIcon} />
       </nav>

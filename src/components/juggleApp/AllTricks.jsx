@@ -4,7 +4,7 @@ import { fetchJugglingTricksData } from "../../store/reducers/jugglingTrickSlice
 import { Accordion, AccordionDetails, AccordionSummary, List, Typography } from "@material-ui/core";
 import Trick from "./Trick";
 
-export default function Chart(props) {
+export default function AllTricks(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
