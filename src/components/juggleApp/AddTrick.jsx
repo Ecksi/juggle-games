@@ -5,15 +5,15 @@ import {
   addThreeBallTrick,
   addFourBallTrick,
 } from "../../store/reducers/jugglingTrickSlice";
-
+import { Box, Button, FormControl, InputLabel, List, ListItem, MenuItem, Select, TextField, Typography } from "@material-ui/core";
 import { API_URL } from "../../app/constants";
 
 export default function AddTrick() {
   const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
   const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
-
-  const [newTrick, setNewTrick] = useState("new trick");
-  const [numBalls, setNumBalls] = useState("threeBall");
+  const [newTrick, setNewTrick] = useState("");
+  // verify that setting state to an emptyString instead of threeBall does not break things
+  const [numBalls, setNumBalls] = useState("");
   const [animationLink, setAnimationLink] = useState("");
   const [prereqCheckedState, setPrereqCheckedState] = useState(
     new Array(threeBallTricks.length).fill(false)
@@ -25,7 +25,7 @@ export default function AddTrick() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let trick = {};
-
+// can this be refactored to be simpler?
     if (numBalls === "threeBall") {
       trick = {
         id: threeBallTricks.length,
@@ -47,7 +47,6 @@ export default function AddTrick() {
 
       dispatch(addFourBallTrick(trick));
     }
-    console.log(trick)
     axios.post(`${API_URL}/api/v1/tricks/addTrick`, trick)
   };
 
@@ -89,44 +88,61 @@ export default function AddTrick() {
   // };
 
   return (
-    <div>
-      <h2>Add a new trick</h2>
-      <label> trick name</label>
+    <Box sx={{ margin: "0 auto", width:"30%"}}>
+      <Typography variant="h4">Add a new trick</Typography>
       <form onSubmit={handleSubmit}>
-        <h3>Trick Name</h3>
-        <input
-          type="text"
-          value={newTrick}
-          onChange={(e) => setNewTrick(e.target.value)}
-        />
-        <select value={numBalls} onChange={(e) => setNumBalls(e.target.value)}>
-          <option value="threeBall">3 ball</option>
-          <option value="fourBall">4 ball</option>
-        </select>
-        <h3>animation Link</h3>
-        <input
-          type="text"
-          value={animationLink}
-          onChange={(e) => setAnimationLink(e.target.value)}
-        />
-        <h3>Select prerequisites</h3>
-        {threeBallTricks.map((trick, index) => (
-          <div key={trick.balls + trick.name}>
-            <input
-              type="checkbox"
-              value={trick}
-              name={trick.name}
-              checked={prereqCheckedState[index]}
-              onChange={() => handlePreReqOnChange(index)}
-            />
-            {trick.name}
-          </div>
-        ))}
-        <button>Add trick</button>
-        <p>{newTrick}</p>
-        <p>{numBalls}</p>
-        <p>{prereqs}</p>
+        <FormControl fullWidth>
+          <TextField
+            required
+            label="Trick Name"
+            value={newTrick}
+            onChange={e => setNewTrick(e.target.value)}
+          >
+          </TextField>
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Number of Balls *</InputLabel>
+          <Select
+            value={numBalls}
+            labelId="demo-simple-select-label"
+            label="Number Of Balls"
+            onChange={e => setNumBalls(e.target.value)}
+          >
+            <MenuItem value="threeBall">3 ball</MenuItem>
+            <MenuItem value="fourBall">4 ball</MenuItem>
+            <MenuItem value="fiveBall">5 ball</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl fullWidth>
+          <TextField
+            required
+            label="Animation Link"
+            value={animationLink}
+            onChange={e => setAnimationLink(e.target.value)}
+          >
+          </TextField>
+        </FormControl>
+        <FormControl fullWidth margin="normal">
+          <Typography>Select Prerequisites</Typography>
+          <List>
+            {threeBallTricks.map((trick, i) => (
+              <ListItem key={i} disableGutters>
+                <input
+                  type="checkbox"
+                  value={trick}
+                  name={trick.name}
+                  checked={prereqCheckedState[i]}
+                  onChange={() => handlePreReqOnChange(i)}
+                />
+                <Typography variant="body2">{trick.name}</Typography>
+              </ListItem>
+            ))}
+          </List>
+        </FormControl>
+        <FormControl fullWidth>
+          <Button type="submit" variant="contained">Add trick</Button>
+        </FormControl>
       </form>
-    </div>
+    </Box>
   );
 }

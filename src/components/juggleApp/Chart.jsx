@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJugglingTricksData } from "../../store/reducers/jugglingTrickSlice";
-import { Accordion, AccordionDetails, AccordionSummary, List } from "@material-ui/core";
+import { Accordion, AccordionDetails, AccordionSummary, List, Typography } from "@material-ui/core";
 import Trick from "./Trick";
 
 export default function Chart(props) {
@@ -27,7 +27,7 @@ export default function Chart(props) {
       <h1>OPTION 1</h1>
       <Accordion>
         <AccordionSummary>
-          <h3>3-ball tricks</h3>
+          <Typography variant="h5">3-ball tricks</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <List>
@@ -40,7 +40,7 @@ export default function Chart(props) {
       </Accordion>
       <Accordion>
         <AccordionSummary>
-          <h3>4-ball tricks</h3>
+          <Typography variant="h5">4-ball tricks</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <List>
@@ -53,10 +53,11 @@ export default function Chart(props) {
       </Accordion>
       <Accordion>
         <AccordionSummary>
-          <h3>5-ball tricks</h3>
+          <Typography variant="h5">5-ball tricks</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <span>ThErE r n0 tRicKs hErE~</span>
+          <span style={{marginTop: '25px'}}>ThErE r n0 tRicKs hErE~</span>
+          <img src="https://i.imgflip.com/1pi6nv.jpg" alt="derp" width= "100px" />
         </AccordionDetails>
       </Accordion>
 
@@ -64,7 +65,7 @@ export default function Chart(props) {
       <h1>OPTION 2</h1>
       <Accordion expanded={expanded === 'panel-1'} onChange={handleChange('panel-1')}>
         <AccordionSummary>
-          <h3>3-ball tricks</h3>
+          <Typography variant="h5">3-ball tricks</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <List>
@@ -77,7 +78,7 @@ export default function Chart(props) {
       </Accordion>
       <Accordion expanded={expanded === 'panel-2'} onChange={handleChange('panel-2')}>
         <AccordionSummary>
-          <h3>4-ball tricks</h3>
+          <Typography variant="h5">4-ball tricks</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <List>
@@ -90,10 +91,11 @@ export default function Chart(props) {
       </Accordion>
       <Accordion expanded={expanded === 'panel-3'} onChange={handleChange('panel-3')}>
         <AccordionSummary>
-          <h3>5-ball tricks</h3>
+          <Typography variant="h5">5-ball tricks</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <span>ThErE r n0 tRicKs hErE~</span>
+          <span style={{marginTop: '25px'}}>ThErE r n0 tRicKs hErE~</span>
+          <img src="https://i.imgflip.com/1pi6nv.jpg" alt="derp" width= "100px" />
         </AccordionDetails>
       </Accordion>
     </div>

@@ -3,7 +3,6 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Avatar } from '@material-ui/core';
 import avatarIcon from "../../assets/img/icons/icon-4b-juggler-color.png";
-// import Avatar from "./Avatar";
 import staffIcon from "../../assets/img/icons/icon-fire-staff-bw.png";
 import "./NavBar.css";
 
