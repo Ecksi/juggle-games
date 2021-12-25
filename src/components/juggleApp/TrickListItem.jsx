@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ListItem, Button } from "@material-ui/core";
+import { ListItem, Button } from "@mui/material";
 
 export default function TrickListItem({ trick, numBalls }) {
   return (

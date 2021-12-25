@@ -5,7 +5,7 @@ import {
   addThreeBallTrick,
   addFourBallTrick,
 } from "../../store/reducers/jugglingTrickSlice";
-import { Box, Button, FormControl, InputLabel, List, ListItem, MenuItem, Select, TextField, Typography } from "@material-ui/core";
+import { Box, Button, FormControl, InputLabel, List, ListItem, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { API_URL } from "../../app/constants";
 
 export default function AddTrick() {
@@ -95,6 +95,7 @@ export default function AddTrick() {
           <TextField
             required
             label="Trick Name"
+            margin="normal"
             value={newTrick}
             onChange={e => setNewTrick(e.target.value)}
           >
@@ -117,6 +118,7 @@ export default function AddTrick() {
           <TextField
             required
             label="Animation Link"
+            margin="normal"
             value={animationLink}
             onChange={e => setAnimationLink(e.target.value)}
           >

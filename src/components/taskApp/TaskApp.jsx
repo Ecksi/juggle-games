@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Typography } from "@mui/material";
 import TaskFilter from "./TaskFilter";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";

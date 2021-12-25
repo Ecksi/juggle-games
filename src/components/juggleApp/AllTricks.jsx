@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJugglingTricksData } from "../../store/reducers/jugglingTrickSlice";
-import { Accordion, AccordionDetails, AccordionSummary, List, Typography } from "@material-ui/core";
+import { Accordion, AccordionDetails, AccordionSummary, Box, List, Typography } from "@mui/material";
 import Trick from "./TrickListItem";
 
 export default function AllTricks(props) {
@@ -23,8 +23,9 @@ export default function AllTricks(props) {
   };
   
   return (
-    <div>
+    <Box className="all-tricks">
       <h1>OPTION 1</h1>
+      <p style={{marginBottom: 40+'px'}}>Accordions kept open between clicks - space between accordions</p>
       <Accordion>
         <AccordionSummary>
           <Typography variant="h5">3-ball tricks</Typography>
@@ -63,7 +64,8 @@ export default function AllTricks(props) {
 
       {/* OPTION 2 */}
       <h1>OPTION 2</h1>
-      <Accordion expanded={expanded === 'panel-1'} onChange={handleChange('panel-1')}>
+      <p style={{marginBottom: 40+'px'}}>Only 1 accordion open at a time - no gap between accordions</p>
+      <Accordion expanded={expanded === 'panel-1'} onChange={handleChange('panel-1')} disableGutters>
         <AccordionSummary>
           <Typography variant="h5">3-ball tricks</Typography>
         </AccordionSummary>
@@ -76,7 +78,7 @@ export default function AllTricks(props) {
           </List>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel-2'} onChange={handleChange('panel-2')}>
+      <Accordion expanded={expanded === 'panel-2'} onChange={handleChange('panel-2')} disableGutters>
         <AccordionSummary>
           <Typography variant="h5">4-ball tricks</Typography>
         </AccordionSummary>
@@ -89,7 +91,7 @@ export default function AllTricks(props) {
           </List>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel-3'} onChange={handleChange('panel-3')}>
+      <Accordion expanded={expanded === 'panel-3'} onChange={handleChange('panel-3')} disableGutters>
         <AccordionSummary>
           <Typography variant="h5">5-ball tricks</Typography>
         </AccordionSummary>
@@ -98,6 +100,6 @@ export default function AllTricks(props) {
           <img src="https://i.imgflip.com/1pi6nv.jpg" alt="derp" width= "100px" />
         </AccordionDetails>
       </Accordion>
-    </div>
+    </Box>
   );
 }

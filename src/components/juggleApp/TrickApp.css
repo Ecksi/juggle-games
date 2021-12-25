@@ -1,0 +1,14 @@
+.all-tricks .MuiList-root {
+  display: flex;
+}
+
+.all-tricks a {
+  text-decoration: none;
+}
+
+.all-tricks a > .MuiButtonBase-root {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  line-height: 1.25;
+}

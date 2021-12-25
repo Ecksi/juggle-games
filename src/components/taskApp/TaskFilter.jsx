@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 
 export default function TaskFilter({ filterTasks }) {
