@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:8080";
+export const API_URL = "http://localhost:5000";
 
 export const HTTP_STATUS = Object.freeze({
   PENDING: "PENDING",
