@@ -1,8 +1,7 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTrick,
-  fetchJugglingTricksData,
 } from "../../store/reducers/jugglingTricksSlice";
 
 import {
@@ -19,22 +18,12 @@ import {
 } from "@mui/material";
 // import { API_URL } from "../../app/constants";
 // import axios from "axios";
-// TODO: All tricks needs to be called on all pages so data is available
+
 export default function AddTrick() {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchJugglingTricksData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const threeBallTricks = useSelector((state) => {
-    console.log("closer", state);
-    return state.jugglingTricks.threeBall;
-  });
-
-  // const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
-  // const fiveBallTricks = useSelector((state) => state.jugglingTrick.fiveBall);
+  const threeBallTricks = useSelector((state) =>state.jugglingTricks.threeBall);
+  // const fourBallTricks = useSelector((state) => state.jugglingTricks.fourBall);
+  // const fiveBallTricks = useSelector((state) => state.jugglingTricks.fiveBall);
 
   const determinePreReq = (e) => {
     let prereqs = [];
@@ -49,6 +38,7 @@ export default function AddTrick() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let trick = {};
+
     trick = {
       id: `${e.target[2].value}BallTricks`.length,
       name: e.target[0].value,
@@ -59,67 +49,10 @@ export default function AddTrick() {
 
     dispatch(addTrick(trick));
 
-    //   if (numBalls === "threeBall") {
-    //     trick = {
-    //       id: threeBallTricks.length,
-    //       balls: 3,
-    //       name: newTrick,
-    //       animation: animationLink,
-    //       prereq: prereqs,
-    //     };
-
-    //     dispatch(addThreeBallTrick(trick));
-    //   } else if (numBalls === "fourBall") {
-    //     trick = {
-    //       id: fourBallTricks.length,
-    //       balls: -1,
-    //       name: newTrick,
-    //       animation: animationLink,
-    //       prereq: prereqs,
-    //     };
-
-    //     dispatch(addFourBallTrick(trick));
-    //   }
     //   axios.post(`${API_URL}/api/v1/tricks/addTrick`, trick);
   };
 
-  // const handlePreReqOnChange = (index) => {
-  //   const preTrick = threeBallTricks[index];
-
-  //   const updatedCheckedState = prereqCheckedState.map((item, ip) =>
-  //     ip === index ? !item : item
-  //   );
-  //   setPrereqCheckedState(updatedCheckedState);
-
-  //   let newPrereqs = [];
-
-  //   // how can this be written to fix filter needs return value error
-  //   if (updatedCheckedState[index]) {
-  //     newPrereqs = prereqs?.slice();
-  //     newPrereqs.push(preTrick.id);
-  //   } else {
-  //     newPrereqs = prereqs?.filter((value) => {
-  //       if (value !== preTrick.id) {
-  //         return value;
-  //       }
-  //       // only here to remove error. refactor~
-  //       return null;
-  //     });
-  //   }
-
-  //   setPrereqs(newPrereqs);
-  // };
-
-  // Currently not being used
-  // const convertBallNumToText = (value) => {
-  //   if (value === 3) {
-  //     return "threeBall";
-  //   }
-  //   if (value === 4) {
-  //     return "fourBall";
-  //   }
-  // };
-
+  const [numBalls, setNumBalls] = useState("");
   return (
     <Box sx={{ margin: "0 auto", width: "30%" }}>
       <Typography variant="h4">Add a new trick</Typography>
@@ -140,8 +73,8 @@ export default function AddTrick() {
           <Select
             labelId="demo-simple-select-label"
             label="Number Of Balls"
-            onChange={(e) => e.target.value}
-            value=""
+            onChange={(e) =>setNumBalls( e.target.value)}
+            value={numBalls}
           >
             <MenuItem value="3">3 ball</MenuItem>
             <MenuItem value="4">4 ball</MenuItem>
