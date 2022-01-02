@@ -23,28 +23,21 @@ export const jugglingTricksSlice = createSlice({
     fiveBall: null,
   },
   reducers: {
-    addThreeBallTrick(state, action) {
-      state.threeBall.push(action.payload);
-    },
-    addFourBallTrick(state, action) {
-      state.fourBall.push(action.payload);
-    },
     addTrick(state, action) {
-      console.log("here is your trick");
+      switch (action.payload.balls) {
+        case "3":
+          state.threeBall = [...state.threeBall, action.payload];
+          break;
+        case "4":
+          state.fourBall = [...state.fourBall, action.payload];
+          break;
+        case "5":
+          state.fiveBall = [...state.fiveBall, action.payload];
+          break;
+        default:
+          return '';
+      }
     },
-    // junk for now, but adding tricks should boil down to 1 function instead of 3 functions doing the same thing
-    // addTrick(state, action) {
-    //   switch (trickType) {
-    //     case "threeBall":
-    //       state.threeBall.push(action.payload);
-    //     case "fourBall":
-    //       state.fourBall.push(action.payload);
-    //     case "fiveball":
-    //       state.fiveBall.push(action.payload);
-    //     default:
-    //         return state;
-    //   }
-    // },
   },
   extraReducers: {
     [fetchJugglingTricksData.pending](state) {
@@ -63,7 +56,6 @@ export const jugglingTricksSlice = createSlice({
   },
 });
 
-export const { addTrick, addThreeBallTrick, addFourBallTrick } =
-  jugglingTricksSlice.actions;
+export const { addTrick } = jugglingTricksSlice.actions;
 
 export default jugglingTricksSlice.reducer;
