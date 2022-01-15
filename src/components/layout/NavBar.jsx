@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { Avatar } from '@mui/material';
+import { Avatar } from "@mui/material";
 import avatarIcon from "../../assets/img/icons/icon-4b-juggler-color.png";
 import staffIcon from "../../assets/img/icons/icon-fire-staff-bw.png";
 import "./NavBar.css";
@@ -12,9 +12,9 @@ export default function NavBar() {
   let location = useLocation();
 
   useEffect(() => {
-      const path = location.pathname.slice(1);
+    const path = location.pathname.slice(1);
 
-      setValue(path)
+    setValue(path);
   }, [location.pathname]);
 
   return (

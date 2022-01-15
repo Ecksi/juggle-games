@@ -77,7 +77,6 @@ export default function TaskApp() {
     }
   }
 
-
   return (
     <Box className="task-app">
       <header className="task-header">

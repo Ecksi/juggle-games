@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 
-
 export default function TaskFilter({ filterTasks }) {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -11,14 +10,19 @@ export default function TaskFilter({ filterTasks }) {
   }
 
   return (
-    <Box sx={{display: "flex", flexDirection: "column", textAlign: "center"}} className="task-filter">
+    <Box
+      sx={{ display: "flex", flexDirection: "column", textAlign: "center" }}
+      className="task-filter"
+    >
       <Typography variant="h6" component="div">
         Filter By:
       </Typography>
       <List className="task-filter-types" disablePadding dense>
         <ListItem
           onClick={filterBy}
-          className={activeFilter === "high-priority" ? activeFilter : undefined}
+          className={
+            activeFilter === "high-priority" ? activeFilter : undefined
+          }
         >
           <ListItemText>High-Priority</ListItemText>
         </ListItem>

@@ -33,7 +33,7 @@ export default function TaskForm({ addTask }) {
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <FormControl style={{width: 400+"px"}}>
+      <FormControl style={{ width: 400 + "px" }}>
         <TextField
           label="Task"
           name="task"
@@ -41,7 +41,9 @@ export default function TaskForm({ addTask }) {
           value={task.task}
           onChange={handleInputChange}
         />
-        <Button type="submit" variant="contained">Add Task</Button>
+        <Button type="submit" variant="contained">
+          Add Task
+        </Button>
       </FormControl>
     </form>
   );
