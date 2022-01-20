@@ -1,0 +1,30 @@
+.juggling-animation {
+  width: 80%;
+  align-self: center;
+}
+
+.MuiAccordionSummary-root .MuiSvgIcon-root {
+  width: 0.8em;
+  height: 0.8em;
+}
+
+.MuiAccordion-region .MuiAccordionDetails-root {
+  padding: 0 16px;
+}
+
+.MuiAccordionSummary-root .MuiAccordionSummary-expandIconWrapper,
+.MuiAccordionSummary-root .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+  color: #461e52;
+}
+
+.MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
+  min-height: auto;
+}
+
+.MuiAccordionSummary-root .MuiAccordionSummary-content.Mui-expanded {
+  margin: 12px 0;
+}
+
+.MuiAccordionSummary-root .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+  transform: rotate(90deg);
+}
