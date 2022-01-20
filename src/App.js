@@ -1,13 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import NavBar from "./components/layout/NavBar";
+import { Box } from "@mui/material";
+import Main from "./components/juggleAppV2/main/Main";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <Outlet />
-    </div>
+    <Box>
+      <Main />
+    </Box>
   );
 }
 
