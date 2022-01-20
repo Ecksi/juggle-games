@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/store";
+import store from "./store/index";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 // import Main from "./components/juggleAppV2/main/Main";
