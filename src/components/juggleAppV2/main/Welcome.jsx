@@ -4,6 +4,9 @@ import MenuIcon from "../../../assets/img/icons/icon-4b-juggling-bw.png";
 export default function Welcome() {
   return (
     <Box>
+      <Typography sx={{ padding: "16px 0", textAlign: "center" }} variant="h4">
+        Component Title
+      </Typography>
       <Typography variant="h6">
         Welcome to Juggle Games. Here you will find stuff about cats and
         juggling. Also probably a link to order a{" "}

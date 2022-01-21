@@ -1,22 +1,24 @@
 import { Outlet } from "react-router-dom";
-import { Container, Typography } from "@mui/material";
-import NavBar from "../sideNav/NavBar";
+import { Box, Container, Typography } from "@mui/material";
+import MobileNav from "../nav/MobileNav";
+import DesktopNav from "../nav/DesktopNav";
 import "./Main.css";
 
 export default function Main() {
   return (
-    <Container className="main-content-container">
-      <NavBar />
-      <Typography
-        sx={{
-          padding: "16px 0",
-          textAlign: "center",
-        }}
-        variant="h4"
+    <Container className="main-content-container" sx={{}}>
+      <Box
+        sx={{ display: { xs: "block", md: "grid" } }}
+        gridTemplateColumns="repeat(12, 1fr)"
       >
-        Juggle Games
-      </Typography>
-      <Outlet />
+        {/* BoxWrappers for Grid are inside the components */}
+        <MobileNav />
+        <DesktopNav />
+        <Box gridColumn="span 1"></Box>
+        <Box gridColumn="span 8">
+          <Outlet />
+        </Box>
+      </Box>
     </Container>
   );
 }

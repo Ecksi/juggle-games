@@ -2,6 +2,7 @@
 import juggleMan from "../../../assets/img/icons/juggle-man.gif";
 import "./Logo.css";
 
+// add position prop. left - center - right
 export default function Logo({ size = "m" }) {
   const juggleManSize = {
     s: { width: "36.5px", top: "25px" },
@@ -18,7 +19,7 @@ export default function Logo({ size = "m" }) {
   const logoText = ["J", "u", "g", "g", "l", "e", " ", "G", "a", "m", "e", "s"];
 
   return (
-    <section style={{ height: "112px" }}>
+    <div style={{ height: "112px" }}>
       <section className="text-prop">
         <h1>
           {logoText.map((text, i) => (
@@ -38,6 +39,6 @@ export default function Logo({ size = "m" }) {
         src={juggleMan}
         style={juggleManSize[size]}
       />
-    </section>
+    </div>
   );
 }
