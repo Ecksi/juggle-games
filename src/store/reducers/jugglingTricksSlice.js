@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL, HTTP_STATUS } from "../../app/constants";
-// import threeBallTricks from "../../assets/json/jugglingTricks/ThreeBallTricks.json";
-// import fourBallTricks from "../../assets/json/jugglingTricks/FourBallTricks.json";
-// import fiveBallTricks from "../../assets/json/jugglingTricks/FiveBallTricks.json";
+import threeBallTricks from "../../assets/json/jugglingTricks/ThreeBallTricks.json";
+import fourBallTricks from "../../assets/json/jugglingTricks/FourBallTricks.json";
+import fiveBallTricks from "../../assets/json/jugglingTricks/FiveBallTricks.json";
 import axios from "axios";
 
 export const fetchJugglingTricksData = createAsyncThunk(
@@ -18,9 +18,9 @@ export const jugglingTricksSlice = createSlice({
   // future state - load from db first - fall back to default trick set
   initialState: {
     loading: null,
-    threeBall: null,
-    fourBall: null,
-    fiveBall: null,
+    threeBall: null || threeBallTricks,
+    fourBall: null || fourBallTricks,
+    fiveBall: null || fiveBallTricks,
   },
   reducers: {
     addTrick(state, action) {
@@ -35,7 +35,7 @@ export const jugglingTricksSlice = createSlice({
           state.fiveBall = [...state.fiveBall, action.payload];
           break;
         default:
-          return '';
+          return "";
       }
     },
   },

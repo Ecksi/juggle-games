@@ -6,11 +6,12 @@ import store from "./store/index";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 // import Main from "./components/juggleAppV2/main/Main";
-import AddTrick from "./components/juggleApp/AddTrick";
 import AllTricks from "./components/juggleAppV2/tricks/AllTricks";
-import LearnToJuggle from "./components/juggleApp/LearnToJuggle";
-import OneTrick from "./components/juggleApp/OneTrick";
 import Trick from "./components/juggleAppV2/tricks/Trick";
+import LearnToJuggle from "./components/juggleAppV2/tricks/LearnToJuggle";
+import AddTrick from "./components/juggleApp/AddTrick";
+// import OneTrick from "./components/juggleApp/OneTrick";
+import Welcome from "./components/juggleAppV2/main/Welcome";
 import TaskApp from "./components/taskApp/TaskApp";
 import "./index.css";
 import "@fontsource/roboto/300.css";
@@ -23,16 +24,14 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<App />}>
-          {/* <Route index element={<Main />} /> */}
+          <Route index element={<Welcome />} />
           <Route exact path="/allTricks" element={<AllTricks />} />
-          <Route exact path="/trick" element={<Trick />} />
           <Route exact path="/addTrick" element={<AddTrick />} />
-          <Route exact path="/allTricks" element={<AllTricks />} />
-          <Route exact path="/learnToJuggle" element={<LearnToJuggle />} />
+          <Route exact path="/learntojuggle" element={<LearnToJuggle />} />
           <Route exact path="/tasks" element={<TaskApp />} />
           <Route
             path="/jugglingTricks/:numBalls/:trickName"
-            element={<OneTrick />}
+            element={<Trick />}
           />
           <Route
             path="*"
