@@ -1,7 +1,24 @@
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
 import "./Trick.css";
 
-export default function Trick({ trick }) {
+export default function Trick() {
+  const convertNumber = {
+    3: "threeBall",
+    4: "fourBall",
+    5: "fiveBall",
+  };
+  const { numBalls, trickName } = useParams();
+  const tricksArr = useSelector(
+    (state) => state.jugglingTricks[convertNumber[numBalls]]
+  );
+  const trick = tricksArr.find((trick) => trick.name === trickName);
+  const getPreReqId = trick.prereq.map((prereqId) => prereqId);
+  const getPreReqs = getPreReqId.map((id) =>
+    tricksArr.find((trick) => trick.id === id)
+  );
+
   return (
     <Box>
       <Grid
@@ -17,7 +34,7 @@ export default function Trick({ trick }) {
         <Grid item container justifyContent="center">
           <img
             alt={`A ${trick.balls} ball juggling trick`}
-            className="juggling-animation"
+            width="50%"
             src={trick.animation}
           />
         </Grid>
@@ -31,7 +48,11 @@ export default function Trick({ trick }) {
         </Grid>
         <Grid item container direction="column" justifyContent="left">
           <Typography variant="body1">Prerequisites:</Typography>
-          <Typography variant="body1">Cascade - Over Throw</Typography>
+          <Typography variant="body1">
+            {getPreReqs.map((prereq) => (
+              <span>{prereq.name}</span>
+            ))}
+          </Typography>
         </Grid>
         <Grid item>
           <Typography variant="body1">Videos:</Typography>

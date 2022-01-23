@@ -1,26 +1,34 @@
 // import { Fragment } from "react";
+import { Box } from "@mui/material";
 import juggleMan from "../../../assets/img/icons/juggle-man.gif";
 import "./Logo.css";
 
 // add position prop. left - center - right
-export default function Logo({ size = "m" }) {
+export default function Logo({ size = "m", position = "center" }) {
   const juggleManSize = {
-    s: { width: "36.5px", top: "25px" },
-    m: { width: "75px", top: "50px" },
-    l: { width: "150px", top: "100px" },
+    m: { width: "75px", top: "46px", left: "46px" },
+  };
+
+  const juggleTextProp = {
+    m: { top: "8px", left: "76px" },
   };
 
   const juggleTextSize = {
-    s: { height: "36.5px", fontSize: "7px" },
     m: { height: "75px", fontSize: "14px" },
-    l: { height: "150px", fontSize: "28px" },
   };
 
   const logoText = ["J", "u", "g", "g", "l", "e", " ", "G", "a", "m", "e", "s"];
 
   return (
-    <div style={{ height: "112px" }}>
-      <section className="text-prop">
+    <Box
+      sx={{
+        position: "relative",
+        // height: "124px",
+        left: "50%",
+        transform: { xs: "translateX(-25%)", md: "translateX(-40%)" },
+      }}
+    >
+      <section className="text-prop" style={juggleTextProp[size]}>
         <h1>
           {logoText.map((text, i) => (
             <span
@@ -39,6 +47,6 @@ export default function Logo({ size = "m" }) {
         src={juggleMan}
         style={juggleManSize[size]}
       />
-    </div>
+    </Box>
   );
 }

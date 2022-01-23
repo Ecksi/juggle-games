@@ -1,8 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-import { fetchJugglingTricksData } from "../../../store/reducers/jugglingTrickSlice";
 import {
   Accordion,
   AccordionDetails,
@@ -14,18 +11,30 @@ import {
   Typography,
 } from "@mui/material";
 import { ArrowForwardIosSharp } from "@mui/icons-material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function AllTricks() {
-  const dispatch = useDispatch();
+  const threeBallTricks = useSelector(
+    (state) => state.jugglingTricks.threeBall
+  );
+  const fourBallTricks = useSelector((state) => state.jugglingTricks.fourBall);
+  const fiveBallTricks = useSelector((state) => state.jugglingTricks.fiveBall);
+  const trickMenu = [
+    [3, threeBallTricks],
+    [4, fourBallTricks],
+    [5, fiveBallTricks],
+  ];
+  const isMobile = useMediaQuery("(min-width:600px)");
 
-  useEffect(() => {
-    dispatch(fetchJugglingTricksData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const threeBallTricks = useSelector((state) => state.jugglingTrick.threeBall);
-  const fourBallTricks = useSelector((state) => state.jugglingTrick.fourBall);
-  const fiveBallTricks = useSelector((state) => state.jugglingTrick.fiveBall);
+  const getTrickMenu = (trickMenu) =>
+    trickMenu.map((trickInfo) => (
+      <Accordion>
+        <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
+          <Typography variant="h5">{trickInfo[0]}-ball tricks</Typography>
+        </AccordionSummary>
+        <AccordionDetails>{getTricks(trickInfo[1])}</AccordionDetails>
+      </Accordion>
+    ));
 
   const getTricks = (tricksArr) => (
     <List disablePadding sx={{ flexDirection: "column" }}>
@@ -40,10 +49,13 @@ export default function AllTricks() {
               borderTop: { xs: "1px solid #461E52", md: "none" },
             },
           }}
-          disableGutters
+          disablePadding={isMobile}
+          disableGutters={!isMobile}
         >
           <Link
             to={`/jugglingTricks/${trick.balls}/${trick.name}`}
+            onClick={(x) => x(false)}
+            state={{ trick }}
             style={{
               textDecoration: "none",
               color: "#461E52",
@@ -59,24 +71,7 @@ export default function AllTricks() {
 
   return (
     <Box className="all-tricks" sx={{ overflow: { xs: "scroll", sm: "auto" } }}>
-      <Accordion>
-        <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
-          <Typography variant="h5">3-ball tricks</Typography>
-        </AccordionSummary>
-        <AccordionDetails>{getTricks(threeBallTricks)}</AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
-          <Typography variant="h5">4-ball tricks</Typography>
-        </AccordionSummary>
-        <AccordionDetails>{getTricks(fourBallTricks)}</AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
-          <Typography variant="h5">5-ball tricks</Typography>
-        </AccordionSummary>
-        <AccordionDetails>{getTricks(fiveBallTricks)}</AccordionDetails>
-      </Accordion>
+      {getTrickMenu(trickMenu)}
     </Box>
   );
 }
