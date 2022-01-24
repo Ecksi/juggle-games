@@ -8,7 +8,7 @@ import App from "./App";
 // import Main from "./components/juggleAppV2/main/Main";
 import AllTricks from "./components/juggleAppV2/tricks/AllTricks";
 import Trick from "./components/juggleAppV2/tricks/Trick";
-import LearnToJuggle from "./components/juggleAppV2/tricks/LearnToJuggle";
+import LearnToJuggle from "./components/juggleAppV2/learnToJuggle/LearnToJuggle";
 import AddTrick from "./components/juggleApp/AddTrick";
 // import OneTrick from "./components/juggleApp/OneTrick";
 import Welcome from "./components/juggleAppV2/main/Welcome";

@@ -27,8 +27,8 @@ export default function AllTricks() {
   const isMobile = useMediaQuery("(min-width:600px)");
 
   const getTrickMenu = (trickMenu) =>
-    trickMenu.map((trickInfo) => (
-      <Accordion>
+    trickMenu.map((trickInfo, i) => (
+      <Accordion key={i}>
         <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
           <Typography variant="h5">{trickInfo[0]}-ball tricks</Typography>
         </AccordionSummary>

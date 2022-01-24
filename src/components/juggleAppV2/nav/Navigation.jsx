@@ -18,8 +18,8 @@ export default function Navigation() {
     },
   ];
 
-  const getMenuSection = menuSection.map((menuItem) => (
-    <Link to={menuItem["menuLink"]}>
+  const getMenuSection = menuSection.map((menuItem, i) => (
+    <Link to={menuItem["menuLink"]} key={i}>
       <p>{menuItem.menuTitle}</p>
     </Link>
   ));
