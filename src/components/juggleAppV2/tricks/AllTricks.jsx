@@ -13,7 +13,9 @@ import {
 import { ArrowForwardIosSharp } from "@mui/icons-material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-export default function AllTricks() {
+// If this prop is not used for desktop- can I just set it to null so it shows up as nothing?
+// This could be applied to navigation component also
+export default function AllTricks({ setIsOpen = null }) {
   const threeBallTricks = useSelector(
     (state) => state.jugglingTricks.threeBall
   );
@@ -54,7 +56,7 @@ export default function AllTricks() {
         >
           <Link
             to={`/jugglingTricks/${trick.balls}/${trick.name}`}
-            onClick={(x) => x(false)}
+            onClick={() => setIsOpen(false)}
             state={{ trick }}
             style={{
               textDecoration: "none",

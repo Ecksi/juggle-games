@@ -1,13 +1,40 @@
+import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import Logo from "../logo/Logo";
-import Navigation from "./Navigation";
+import AllTricks from "../tricks/AllTricks";
 
 export default function DesktopNav() {
+  const menuSection = [
+    {
+      menuTitle: "Learn to Juggle",
+      menuLink: "/learntojuggle",
+    },
+    {
+      menuTitle: "Add a Trick",
+      menuLink: "/addtrick",
+    },
+    {
+      menuTitle: "Login",
+      menuLink: "/login",
+    },
+  ];
+
+  const getMenuSection = menuSection.map((menuItem, i) => (
+    <Link to={menuItem["menuLink"]} key={i}>
+      <p>{menuItem.menuTitle}</p>
+    </Link>
+  ));
+
   return (
     // Should this be a fragment and this Box wrapper should live in Main?
     <Box sx={{ display: { xs: "none", md: "block" } }} gridColumn="span 3">
       <Logo />
-      <Navigation />
+      <Box className="thisBox" sx={{ paddingTop: "124px" }}>
+        <hr />
+        <section style={{ margin: "12px" }}>{getMenuSection}</section>
+        <hr />
+        <AllTricks />
+      </Box>
     </Box>
   );
 }

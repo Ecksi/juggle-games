@@ -4,19 +4,18 @@ import { Box, Grid, Typography } from "@mui/material";
 import "./Trick.css";
 
 export default function Trick() {
-  const convertNumber = {
+  const convertNum = {
     3: "threeBall",
     4: "fourBall",
     5: "fiveBall",
   };
   const { numBalls, trickName } = useParams();
   const tricksArr = useSelector(
-    (state) => state.jugglingTricks[convertNumber[numBalls]]
+    (state) => state.jugglingTricks[convertNum[numBalls]]
   );
   const trick = tricksArr.find((trick) => trick.name === trickName);
-  const getPreReqId = trick.prereq.map((prereqId) => prereqId);
-  const getPreReqs = getPreReqId.map((id) =>
-    tricksArr.find((trick) => trick.id === id)
+  const getPreReqs = trick.prereq.map((prereqId) =>
+    tricksArr.find((trick) => trick.id === prereqId)
   );
 
   return (
@@ -49,8 +48,8 @@ export default function Trick() {
         <Grid item container direction="column" justifyContent="left">
           <Typography variant="body1">Prerequisites:</Typography>
           <Typography variant="body1">
-            {getPreReqs.map((prereq) => (
-              <span>{prereq.name}</span>
+            {getPreReqs.map((prereq, i) => (
+              <span key={i}>{prereq.name}</span>
             ))}
           </Typography>
         </Grid>

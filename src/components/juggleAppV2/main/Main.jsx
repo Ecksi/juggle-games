@@ -15,7 +15,7 @@ export default function Main() {
         <MobileNav />
         <DesktopNav />
         <Box gridColumn="span 1"></Box>
-        <Box gridColumn="span 8" sx={{ paddingRight: "18px" }}>
+        <Box gridColumn="span 8" sx={{ paddingRight: { xs: "0", md: "18px" } }}>
           <Outlet />
         </Box>
       </Box>

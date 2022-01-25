@@ -1,54 +1,81 @@
-import { Card, CardContent, List, ListItem, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
+// Thinking about incorporating a count key here to start people off with the habit of counting as a tool
+// count: "1, 1, 1"
+// count: "1 2, 1 2, 1 2" || "1, 2, 1, 2"
+// count: "1 2 3, 1 2 3, 1 2 3" || "1, 2, 3, 1, 2, 3"
 const steps = [
   {
     numOfBalls: 1,
-    header: "Getting Started",
+    header: "Getting started",
     steps: [
-      "toss it around, get comfortable with it",
-      "throw it straight up, aim to acheive the same height with each throw",
-      " try it in the other hand now",
-      " now throw the ball from hand to hand aiming to hit the same height you practiced with earlier",
+      "Toss the ball around to get comfortable with it",
+      "In one hand toss the ball straight up, about shoulder height",
+      "*The highpoint the ball reaches will be your pinnacle*",
+      "Try to consistently throw the ball at this height",
+      "Repeat with your other hand",
+    ],
+  },
+  {
+    numOfBalls: 1,
+    header: "Baby steps",
+    steps: [
+      "Start with the ball in your dominant-hand",
+      "Toss it to your off-hand",
+      "The ball should cross your chest in a nice arc motion",
+      "The highpoint (pinnacle) of your arc should happen near the center of your chest",
+      "Toss it back to your dominant-hand",
     ],
   },
   {
     numOfBalls: 2,
     header: "Moving on up",
     steps: [
-      "hold 1 ball in each hand",
-      "throw the ball in your dominant hand to your other hand",
-      "while the ball is in the air, throw the ball from your other hand to your dominant",
-      "be sure to work on this starting from your non-dominant hand as well",
+      "Start with 1 ball in each hand",
+      "Toss the ball in your dominant-hand to your off-hand",
+      "Just before the ball reaches the pinnacle of your arc..",
+      "toss the ball in your off-hand to your dominant-hand",
+      "This second ball should follow the same arc as primary ball with just slightly lower so they do not collide",
+      "Be sure to practice starting from your non-dominant hand as well",
     ],
   },
   {
     numOfBalls: 3,
-    header: "3 balls!",
+    header: "Now with 3 balls",
     steps: [
-      "hold 2 balls in your dominant hand and 1 in your off hand",
-      " throw a ball from your dominant hand",
-      " while that ball is in the air throw a ball from your other hand to your dominant hand exactly like in step 2",
-      "follow up by throwing the last ball from your non-dominant hand to your dominant",
-      "stop throwing after this thrid throw- congratulations you have flashed the cascade",
-      "be sure to work on this starting from your non-dominant hand as well",
+      "Start with 2 balls in your dominant-hand and 1 in your off-hand",
+      "You will begin with the same process as the previous step",
+      "Toss ball in dominant-hand, wait for pinnacle, toss ball in off-hand",
+      "When the second ball is nearing its pinnacle, toss your last ball",
+      "*Note you will catch the first toss before you throw your last throw",
+      "Stop throwing after this third throw- congratulations you have just flashed the cascade!",
+      "Be sure to practice starting from your non-dominant hand as well",
     ],
   },
   {
     numOfBalls: 3,
-    header: "Now you've got it",
+    header: "Three-ball cascade",
     steps: [
-      "put it all together",
-      "using counting as a tool to help you",
-      "increase 1 by 1... 1, 2, 3, 4, stop. 1, 2, 3, 4, 5, stop. build and build",
+      "Put it all together, adding 1 additional throw at a time",
+      "You will do the same thing as in the previous step, but instead of stopping you will continue the pattern",
+      "1, 2, 3, 4 stop. 1, 2, 3, 4, 5 stop. Build and build",
     ],
   },
   {
     numOfBalls: 3,
-    header: "Improving your skills",
+    header: "Next Steps",
     steps: [
-      "additional tips",
-      "focus on consistent throws",
-      "it is a lot easier to catch when you can count on the ball landing in the same place",
+      "Focus on consistent throws, it is a lot easier to catch the ball if it lands in the same spot each time",
+      "Learn some tricks, overthrow and jugglers tennis are great places to begin",
     ],
   },
 ];
@@ -59,21 +86,41 @@ export default function LearnToJuggleCard({
   handlePrev,
 }) {
   return (
-    <Card sx={{ marginTop: "32px" }}>
-      <CardContent>
-        <Typography variant="h5" gutterBottom>
+    <Card
+      sx={{
+        marginTop: { xs: "0", md: "32px" },
+        height: { xs: "80vh", md: "500px" },
+      }}
+    >
+      <CardContent
+        sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+      >
+        <Typography variant="h6" gutterBottom>
           {steps[step].header}
         </Typography>
-        <Typography variant="h4" color="text.secondary" gutterBottom>
-          Number of Balls:
-          {steps[step].numOfBalls}
+        <Typography variant="h5" color="text.secondary" gutterBottom>
+          Number of Balls: {steps[step].numOfBalls}
         </Typography>
-        <List>
-          Steps for this trick
-          {steps[step].steps}
+        <List sx={{ flexGrow: "3" }}>
+          {steps[step].steps.map((step, i) => (
+            <ListItem key={i} disablePadding>
+              <ListItemText>{step}</ListItemText>
+            </ListItem>
+          ))}
         </List>
-        <button onClick={handlePrev}>Prev</button>
-        <button onClick={handleNext}>Next</button>
+        <Box
+          sx={{
+            display: { xs: "none", md: "flex" },
+            justifyContent: "space-around",
+          }}
+        >
+          <Button onClick={handlePrev} variant="contained">
+            Prev
+          </Button>
+          <Button onClick={handleNext} variant="contained">
+            Next
+          </Button>
+        </Box>
       </CardContent>
     </Card>
   );
