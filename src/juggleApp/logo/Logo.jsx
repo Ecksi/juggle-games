@@ -1,6 +1,6 @@
 // import { Fragment } from "react";
 import { Box } from "@mui/material";
-import juggleMan from "../../../assets/img/icons/juggle-man.gif";
+import juggleMan from "../../assets/img/icons/juggle-man.gif";
 import "./Logo.css";
 
 // add position prop. left - center - right

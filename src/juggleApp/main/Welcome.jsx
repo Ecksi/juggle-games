@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import MenuIcon from "../../../assets/img/icons/menu-o.png";
+import MenuIcon from "../../assets/img/icons/menu-o.png";
 
 export default function Welcome() {
   return (

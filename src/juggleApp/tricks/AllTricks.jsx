@@ -22,15 +22,21 @@ export default function AllTricks({ setIsOpen = null }) {
   const fourBallTricks = useSelector((state) => state.jugglingTricks.fourBall);
   const fiveBallTricks = useSelector((state) => state.jugglingTricks.fiveBall);
   const trickMenu = [
+    [2, fiveBallTricks],
     [3, threeBallTricks],
     [4, fourBallTricks],
     [5, fiveBallTricks],
+    [6, fiveBallTricks],
+    [7, fiveBallTricks],
   ];
   const isMobile = useMediaQuery("(min-width:600px)");
 
   const getTrickMenu = (trickMenu) =>
     trickMenu.map((trickInfo, i) => (
-      <Accordion key={i}>
+      <Accordion
+        key={i}
+        sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+      >
         <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
           <Typography variant="h5">{trickInfo[0]}-ball tricks</Typography>
         </AccordionSummary>

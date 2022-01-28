@@ -7,16 +7,16 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
-import twoBallsC from "../../../assets/img/icons/2b-c.png";
-import twoBallsO from "../../../assets/img/icons/2b-o.png";
-import threeBallsC from "../../../assets/img/icons/3b-c.png";
-import threeBallsO from "../../../assets/img/icons/3b-o.png";
-import fourBallsC from "../../../assets/img/icons/4b-c.png";
-import fourBallsO from "../../../assets/img/icons/4b-o.png";
-import fiveBallsC from "../../../assets/img/icons/5b-c.png";
-import fiveBallsO from "../../../assets/img/icons/5b-o.png";
-import sevenBallsC from "../../../assets/img/icons/7b-c.png";
-import sevenBallsO from "../../../assets/img/icons/7b-o.png";
+import twoBallsC from "../../assets/img/icons/2b-c.png";
+import twoBallsO from "../../assets/img/icons/2b-o.png";
+import threeBallsC from "../../assets/img/icons/3b-c.png";
+import threeBallsO from "../../assets/img/icons/3b-o.png";
+import fourBallsC from "../../assets/img/icons/4b-c.png";
+import fourBallsO from "../../assets/img/icons/4b-o.png";
+import fiveBallsC from "../../assets/img/icons/5b-c.png";
+import fiveBallsO from "../../assets/img/icons/5b-o.png";
+import sevenBallsC from "../../assets/img/icons/7b-c.png";
+import sevenBallsO from "../../assets/img/icons/7b-o.png";
 
 export default function BallCard({
   trickInfo,
