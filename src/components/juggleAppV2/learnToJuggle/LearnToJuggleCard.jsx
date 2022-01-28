@@ -9,10 +9,6 @@ import {
   Typography,
 } from "@mui/material";
 
-// Thinking about incorporating a count key here to start people off with the habit of counting as a tool
-// count: "1, 1, 1"
-// count: "1 2, 1 2, 1 2" || "1, 2, 1, 2"
-// count: "1 2 3, 1 2 3, 1 2 3" || "1, 2, 3, 1, 2, 3"
 const steps = [
   {
     numOfBalls: 1,
@@ -102,6 +98,7 @@ export default function LearnToJuggleCard({
           Number of Balls: {steps[step].numOfBalls}
         </Typography>
         <List sx={{ flexGrow: "3" }}>
+          {/* some bad naming right here.. steps step steps step */}
           {steps[step].steps.map((step, i) => (
             <ListItem key={i} disablePadding>
               <ListItemText>{step}</ListItemText>

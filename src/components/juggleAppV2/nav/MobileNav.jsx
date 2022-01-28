@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Box, Drawer } from "@mui/material";
 import AllTricks from "../tricks/AllTricks";
 import Logo from "../logo/Logo";
-import MenuIcon from "../../../assets/img/icons/icon-4b-juggling-bw.png";
-import MenuIconHover from "../../../assets/img/icons/icon-4b-juggling-color.png";
+import MenuIcon from "../../../assets/img/icons/menu-o.png";
+import MenuIconHover from "../../../assets/img/icons/menu-c.png";
 import "./Navigation.css";
 
 export default function MobileNav() {
