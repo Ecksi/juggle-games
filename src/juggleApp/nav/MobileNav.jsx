@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Drawer } from "@mui/material";
 import AllTricks from "../tricks/AllTricks";
@@ -31,12 +31,10 @@ export default function MobileNav() {
   ));
 
   return (
-    // Should this be a fragment and this Box wrapper should live in Main?
-    <Box sx={{ display: { md: "none" } }}>
+    <Fragment>
       <img
         alt="Menu Icon"
         src={MenuIcon}
-        className="nav-toggle"
         onClick={() => setIsOpen(true)}
         onMouseOut={(e) => (e.currentTarget.src = MenuIcon)}
         onMouseOver={(e) => (e.currentTarget.src = MenuIconHover)}
@@ -55,13 +53,13 @@ export default function MobileNav() {
         }}
       >
         <Logo />
-        <Box className="thisBox" sx={{ paddingTop: "124px" }}>
+        <Box sx={{ paddingTop: "124px" }}>
           <hr />
           <section style={{ margin: "12px" }}>{getMenuSection}</section>
           <hr />
           <AllTricks setIsOpen={setIsOpen} />
         </Box>
       </Drawer>
-    </Box>
+    </Fragment>
   );
 }

@@ -7,11 +7,6 @@
   padding: 0;
 }
 
-.MuiAccordionSummary-root .MuiAccordionSummary-expandIconWrapper,
-.MuiAccordionSummary-root .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
-  color: #461e52;
-}
-
 .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
   min-height: auto;
 }

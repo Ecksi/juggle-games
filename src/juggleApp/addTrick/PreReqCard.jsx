@@ -50,7 +50,7 @@ export default function PreReqCard({
   return (
     <Fragment>
       <Typography variant="h4">Add Prerequesistitiesis</Typography>
-      <FormControl variant="standard" className="formControl">
+      <FormControl variant="standard">
         <InputLabel id="demo-customized-select-label">Balls</InputLabel>
         <Select
           labelId="demo-customized-select-label"

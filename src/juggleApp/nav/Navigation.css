@@ -4,8 +4,6 @@
   left: 4px;
   padding: 6px;
   width: 50px;
-  border: 2px solid #dd517e;
-  border-radius: 12px;
   cursor: pointer;
   z-index: 10;
 }

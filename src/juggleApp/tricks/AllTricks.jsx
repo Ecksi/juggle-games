@@ -78,7 +78,7 @@ export default function AllTricks({ setIsOpen = null }) {
   );
 
   return (
-    <Box className="all-tricks" sx={{ overflow: { xs: "scroll", sm: "auto" } }}>
+    <Box sx={{ overflow: { xs: "scroll", sm: "auto" } }}>
       {getTrickMenu(trickMenu)}
     </Box>
   );

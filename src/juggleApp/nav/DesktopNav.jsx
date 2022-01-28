@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import Logo from "../logo/Logo";
@@ -26,15 +27,14 @@ export default function DesktopNav() {
   ));
 
   return (
-    // Should this be a fragment and this Box wrapper should live in Main?
-    <Box sx={{ display: { xs: "none", md: "block" } }} gridColumn="span 3">
+    <Fragment>
       <Logo />
-      <Box className="thisBox" sx={{ paddingTop: "124px" }}>
+      <Box sx={{ paddingTop: "124px" }}>
         <hr />
         <section style={{ margin: "12px" }}>{getMenuSection}</section>
         <hr />
         <AllTricks />
       </Box>
-    </Box>
+    </Fragment>
   );
 }

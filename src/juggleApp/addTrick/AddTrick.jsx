@@ -105,7 +105,7 @@ export default function AddTrick() {
           height: { xs: "80vh", md: "500px" },
         }}
       >
-        <CardContent className="content" sx={{ height: "100%" }}>
+        <CardContent sx={{ height: "100%" }}>
           <Box
             component="form"
             display="flex"

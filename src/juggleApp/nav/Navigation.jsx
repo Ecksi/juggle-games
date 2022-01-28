@@ -25,7 +25,7 @@
 //   ));
 
 //   return (
-//     <Box className="thisBox" sx={{ paddingTop: "124px" }}>
+//     <Box sx={{ paddingTop: "124px" }}>
 //       <hr />
 //       <section style={{ margin: "12px" }}>{getMenuSection}</section>
 //       <hr />
