@@ -4,12 +4,13 @@ import OneLineCard from "./OneLineCard";
 import BallCard from "./BallCard";
 import PreReqCard from "./PreReqCard";
 import PreviewCard from "./PreviewCard";
+import "./AddTrick.css";
 
 export default function AddTrick() {
   const [activeStep, setActiveStep] = useState(0);
   const [trickInfo, setTrickInfo] = useState({
     name: "",
-    balls: "",
+    balls: "3",
     animation: "",
     prereqs: [],
     error: false,
@@ -22,20 +23,20 @@ export default function AddTrick() {
   };
 
   const handleNext = () => {
-    checkForError();
-
     activeStep + 1 === steps.length
       ? setActiveStep(0)
       : setActiveStep(activeStep + 1);
   };
 
-  const checkForError = () =>
-    trickInfo.name ? (trickInfo.error = false) : (trickInfo.error = true);
+  const handleSubmit = () => {
+    // TODO: this fucntion
+  };
+
   const addNameCard = (
     <OneLineCard
       trickInfo={trickInfo}
       setTrickInfo={setTrickInfo}
-      error={trickInfo.error}
+      error={!trickInfo.name.length}
       header="What is your Trick name?"
       inputText="Trick Name"
       lineType="name"
@@ -85,12 +86,12 @@ export default function AddTrick() {
       <Card
         sx={{
           marginTop: { xs: "0", md: "32px" },
-          padding: "24px",
           height: { xs: "80vh", md: "500px" },
+          width: { xs: "100%", md: "600px" },
           backgroundColor: "background.paper",
         }}
       >
-        <CardContent sx={{ height: "100%", padding: "0" }}>
+        <CardContent sx={{ height: "100%", padding: "24px" }}>
           <Box
             component="form"
             display="flex"
@@ -100,23 +101,41 @@ export default function AddTrick() {
             height="100%"
           >
             {steps[activeStep]}
-            <Box display="flex" justifyContent="space-evenly" width="100%">
+            <Box
+              display="flex"
+              justifyContent={activeStep === 0 ? "flex-end" : "space-between"}
+              width="100%"
+              marginBottom="12px"
+            >
               <Button
                 onClick={handlePrev}
                 variant="outlined"
-                sx={{ display: activeStep === 0 ? "none" : "block" }}
+                sx={{
+                  display: activeStep === 0 ? "none" : "block",
+                  marginLeft: "18px",
+                }}
               >
                 Prev
               </Button>
-              <Button
-                onClick={handleNext}
-                variant="outlined"
-                sx={{
-                  display: activeStep === steps.length - 1 ? "none" : "block",
-                }}
-              >
-                Next
-              </Button>
+              {activeStep === steps.length - 1 ? (
+                <Button
+                  disabled={!trickInfo.name.length}
+                  onClick={handleSubmit}
+                  variant="outlined"
+                  sx={{ marginRight: "18px" }}
+                >
+                  Submit
+                </Button>
+              ) : (
+                <Button
+                  disabled={!trickInfo.name.length}
+                  onClick={handleNext}
+                  variant="outlined"
+                  sx={{ marginRight: "18px" }}
+                >
+                  Next
+                </Button>
+              )}
             </Box>
           </Box>
         </CardContent>

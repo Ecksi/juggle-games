@@ -17,12 +17,13 @@ export default function OneLineCard({
       <TextField
         required
         error={error}
+        helperText={error ? `Please enter a ${lineType} for your trick` : ""}
         id={`add-trick-${lineType}`}
         label={inputText}
-        variant="standard"
-        value={trickInfo[lineType]}
         onChange={handleChange}
-        helperText={error ? `Please enter a ${lineType} for your trick` : ""}
+        sx={{ width: "80%" }}
+        value={trickInfo[lineType]}
+        variant="standard"
       />
     </Fragment>
   );

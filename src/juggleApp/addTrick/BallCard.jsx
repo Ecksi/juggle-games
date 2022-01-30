@@ -70,7 +70,7 @@ export default function BallCard({ trickInfo, setTrickInfo }) {
         value={trickInfo.balls}
         onChange={handleBalls}
         name="row-radio-buttons-group"
-        sx={{ width: "100%", justifyContent: "space-evenly" }}
+        sx={{ height: "100%", width: "100%", justifyContent: "space-evenly" }}
       >
         {generateOptions}
       </RadioGroup>

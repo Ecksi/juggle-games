@@ -23,12 +23,13 @@ export default function Logo({ size = "m", position = "center", mode }) {
     <Box
       sx={{
         position: "relative",
-        left: "50%",
-        transform: { xs: "translateX(-25%)", md: "translateX(-40%)" },
+        left: { xs: "20%", md: "15%" },
+        top: { xs: "0", md: "-136px" },
       }}
     >
-      <section
-        style={{
+      <Box
+        component="section"
+        sx={{
           ...juggleTextProp[size],
           position: "absolute",
           borderRadius: "50%",
@@ -44,7 +45,7 @@ export default function Logo({ size = "m", position = "center", mode }) {
                 ...juggleTextSize[size],
                 position: "absolute",
                 width: "10px",
-                fontFamily: "Monaco, MonoSpace",
+                fontFamily: "MonoSpace",
                 fontWeight: "bold",
                 transformOrigin: "bottom center",
                 transform: `rotate(${-85 + 15 * i}deg)`,
@@ -54,7 +55,7 @@ export default function Logo({ size = "m", position = "center", mode }) {
             </span>
           ))}
         </Typography>
-      </section>
+      </Box>
       <img
         alt="A stick person juggling 3 balls"
         src={jugglePerson}

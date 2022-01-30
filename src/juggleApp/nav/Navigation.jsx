@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Drawer } from "@mui/material";
+import { Box, Drawer, Paper } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import AllTricks from "../tricks/AllTricks";
 import Logo from "../logo/Logo";
@@ -27,17 +27,35 @@ export default function Navigation() {
   ];
 
   const getMenuSection = menuSection.map((menuItem, i) => (
-    <Link to={menuItem["menuLink"]} key={i}>
-      <p onClick={() => setIsOpen(false)}>{menuItem.menuTitle}</p>
+    <Link to={menuItem["menuLink"]} key={i} style={{ textDecoration: "none" }}>
+      <Paper
+        onClick={() => setIsOpen(false)}
+        sx={{
+          padding: "4px 16px",
+          color: "text.primary",
+          fontWeight: "normal",
+          fontSize: "1.10rem",
+          ":hover": { backgroundColor: "divider" },
+          backgroundColor: "transparent",
+          borderRadius: "0",
+          boxShadow: "none",
+        }}
+      >
+        {menuItem.menuTitle}
+      </Paper>
     </Link>
   ));
 
   const menuGuts = (
     <Box>
-      <Box sx={{ paddingTop: "124px" }}>
-        <hr />
-        <section style={{ margin: "12px" }}>{getMenuSection}</section>
-        <hr />
+      <Box
+        sx={{
+          marginTop: "136px",
+          borderTop: "2px solid",
+          borderBottom: "2px solid",
+        }}
+      >
+        {getMenuSection}
       </Box>
       <AllTricks setIsOpen={setIsOpen} />
     </Box>
@@ -70,7 +88,7 @@ export default function Navigation() {
         PaperProps={{
           sx: {
             width: "80%",
-            paddingTop: "12px",
+            paddingTop: { sm: "0", md: "12px" },
           },
         }}
       >

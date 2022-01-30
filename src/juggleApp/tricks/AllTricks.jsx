@@ -42,6 +42,7 @@ export default function AllTricks({ setIsOpen = null }) {
           expandIcon={
             <ArrowForwardIosSharp sx={{ width: "0.8em", height: "0.8em" }} />
           }
+          sx={{ ":hover": { backgroundColor: "divider" } }}
         >
           <Typography variant="h5">{trickInfo[0]}-ball tricks</Typography>
         </AccordionSummary>
