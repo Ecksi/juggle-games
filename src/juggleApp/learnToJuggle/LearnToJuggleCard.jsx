@@ -84,7 +84,7 @@ export default function LearnToJuggleCard({
   return (
     <Card
       sx={{
-        margin: { xs: "0", md: "32px auto 0" },
+        margin: { xs: "0", md: "12px auto 0" },
         height: { xs: "80vh", md: "500px" },
         width: { xs: "100%", md: "600px" },
       }}

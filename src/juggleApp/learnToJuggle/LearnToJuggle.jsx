@@ -53,7 +53,7 @@ export default function LearnToJuggle() {
         sx={{
           display: { xs: "none", md: "flex" },
           flexWrap: "wrap",
-          justifyContent: "center",
+          justifyContent: "space-around",
         }}
         connector={<Fragment />}
       >
