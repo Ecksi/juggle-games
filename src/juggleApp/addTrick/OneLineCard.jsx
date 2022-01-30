@@ -1,13 +1,11 @@
 import { Fragment } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 export default function OneLineCard({
   trickInfo,
   setTrickInfo,
   header,
   inputText,
   lineType,
-  handlePrev,
-  handleNext,
   error,
 }) {
   const handleChange = (e) =>
@@ -26,14 +24,6 @@ export default function OneLineCard({
         onChange={handleChange}
         helperText={error ? `Please enter a ${lineType} for your trick` : ""}
       />
-      <Box display="flex" justifyContent="space-evenly" width="100%">
-        <Button onClick={handlePrev} variant="outlined">
-          Prev
-        </Button>
-        <Button onClick={handleNext} variant="outlined">
-          Next
-        </Button>
-      </Box>
     </Fragment>
   );
 }

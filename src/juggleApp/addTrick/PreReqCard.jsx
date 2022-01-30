@@ -2,7 +2,6 @@ import { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   Box,
-  Button,
   Chip,
   FormControl,
   InputLabel,
@@ -12,12 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function PreReqCard({
-  trickInfo,
-  setTrickInfo,
-  handlePrev,
-  handleNext,
-}) {
+export default function PreReqCard({ trickInfo, setTrickInfo }) {
   const [balls, setBalls] = useState("3");
   const threeBallTricks = useSelector(
     (state) => state.jugglingTricks.threeBall
@@ -51,10 +45,10 @@ export default function PreReqCard({
     <Fragment>
       <Typography variant="h4">Add Prerequesistitiesis</Typography>
       <FormControl variant="standard">
-        <InputLabel id="demo-customized-select-label">Balls</InputLabel>
+        <InputLabel id="select-balls-label">Balls</InputLabel>
         <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
+          labelId="select-balls-label"
+          id="select-balls"
           value={balls}
           onChange={handlePrereqBalls}
           input={<OutlinedInput label="Number of Balls" />}
@@ -67,14 +61,14 @@ export default function PreReqCard({
         </Select>
       </FormControl>
       <FormControl sx={{ width: 300 }} component="fieldset" variant="standard">
-        <InputLabel id="demo-multiple-chip-label">Select a trick</InputLabel>
+        <InputLabel id="select-trick-label">Select a trick</InputLabel>
         <Select
-          labelId="demo-multiple-chip-label"
-          id="demo-multiple-chip"
+          labelId="select-trick-label"
+          id="select-trick"
           multiple
           value={trickInfo.prereqs}
           onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          input={<OutlinedInput id="select-multiple-trick" label="Chip" />}
           renderValue={(selected) => <Box>{selected[selected.length - 1]}</Box>}
         >
           {getTricks[balls].map((name) => (
@@ -89,14 +83,6 @@ export default function PreReqCard({
         {trickInfo.prereqs.map((prereq) => (
           <Chip key={prereq} label={prereq} />
         ))}
-      </Box>
-      <Box display="flex" justifyContent="space-evenly" width="100%">
-        <Button onClick={handlePrev} variant="outlined">
-          Prev
-        </Button>
-        <Button onClick={handleNext} variant="outlined">
-          Next
-        </Button>
       </Box>
     </Fragment>
   );

@@ -1,6 +1,4 @@
 import {
-  Box,
-  Button,
   FormControl,
   FormControlLabel,
   Radio,
@@ -18,12 +16,7 @@ import fiveBallsO from "../../assets/img/icons/5b-o.png";
 import sevenBallsC from "../../assets/img/icons/7b-c.png";
 import sevenBallsO from "../../assets/img/icons/7b-o.png";
 
-export default function BallCard({
-  trickInfo,
-  setTrickInfo,
-  handlePrev,
-  handleNext,
-}) {
+export default function BallCard({ trickInfo, setTrickInfo }) {
   const handleBalls = (e) =>
     setTrickInfo({ ...trickInfo, balls: e.target.value });
   const getImg = (numBalls) => {
@@ -64,10 +57,7 @@ export default function BallCard({
   return (
     <FormControl
       sx={{
-        display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-between",
         height: "100%",
         width: "100%",
       }}
@@ -84,14 +74,6 @@ export default function BallCard({
       >
         {generateOptions}
       </RadioGroup>
-      <Box display="flex" justifyContent="space-evenly" width="100%">
-        <Button onClick={handlePrev} variant="outlined">
-          Prev
-        </Button>
-        <Button onClick={handleNext} variant="outlined">
-          Next
-        </Button>
-      </Box>
     </FormControl>
   );
 }

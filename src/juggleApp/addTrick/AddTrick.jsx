@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import OneLineCard from "./OneLineCard";
 import BallCard from "./BallCard";
 import PreReqCard from "./PreReqCard";
@@ -35,8 +35,6 @@ export default function AddTrick() {
     <OneLineCard
       trickInfo={trickInfo}
       setTrickInfo={setTrickInfo}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
       error={trickInfo.error}
       header="What is your Trick name?"
       inputText="Trick Name"
@@ -45,42 +43,24 @@ export default function AddTrick() {
   );
 
   const addBallCard = (
-    <BallCard
-      trickInfo={trickInfo}
-      setTrickInfo={setTrickInfo}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
-    />
+    <BallCard trickInfo={trickInfo} setTrickInfo={setTrickInfo} />
   );
 
   const addPrereqCard = (
-    <PreReqCard
-      trickInfo={trickInfo}
-      setTrickInfo={setTrickInfo}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
-    />
+    <PreReqCard trickInfo={trickInfo} setTrickInfo={setTrickInfo} />
   );
 
   const addAnimationCard = (
     <OneLineCard
       trickInfo={trickInfo}
       setTrickInfo={setTrickInfo}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
       header="What is your Animation Link?"
       inputText="Animation Link"
       lineType="animation"
     />
   );
 
-  const addPreviewCard = (
-    <PreviewCard
-      trickInfo={trickInfo}
-      handlePrev={handlePrev}
-      handleNext={handleNext}
-    />
-  );
+  const addPreviewCard = <PreviewCard trickInfo={trickInfo} />;
 
   const steps = [
     addNameCard,
@@ -95,17 +75,22 @@ export default function AddTrick() {
       <Typography
         variant="h4"
         align="center"
-        sx={{ margin: { xs: "18px 0", md: "18px 0 32px" } }}
+        sx={{
+          margin: { xs: "18px 0", md: "18px 0 32px" },
+          color: "text.primary",
+        }}
       >
         Add a trick
       </Typography>
       <Card
         sx={{
           marginTop: { xs: "0", md: "32px" },
+          padding: "24px",
           height: { xs: "80vh", md: "500px" },
+          backgroundColor: "background.paper",
         }}
       >
-        <CardContent sx={{ height: "100%" }}>
+        <CardContent sx={{ height: "100%", padding: "0" }}>
           <Box
             component="form"
             display="flex"
@@ -115,6 +100,24 @@ export default function AddTrick() {
             height="100%"
           >
             {steps[activeStep]}
+            <Box display="flex" justifyContent="space-evenly" width="100%">
+              <Button
+                onClick={handlePrev}
+                variant="outlined"
+                sx={{ display: activeStep === 0 ? "none" : "block" }}
+              >
+                Prev
+              </Button>
+              <Button
+                onClick={handleNext}
+                variant="outlined"
+                sx={{
+                  display: activeStep === steps.length - 1 ? "none" : "block",
+                }}
+              >
+                Next
+              </Button>
+            </Box>
           </Box>
         </CardContent>
       </Card>
