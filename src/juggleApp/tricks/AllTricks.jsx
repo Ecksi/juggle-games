@@ -60,9 +60,9 @@ export default function AllTricks({ setIsOpen = null }) {
           sx={{
             width: "unset",
             display: "block",
-            borderBottom: { xs: "1px solid #461E52", md: "none" },
+            borderBottom: { xs: "1px solid", md: "none" },
             ":first-of-type": {
-              borderTop: { xs: "1px solid #461E52", md: "none" },
+              borderTop: { xs: "1px solid", md: "none" },
             },
           }}
           disablePadding={isMobile}
@@ -74,11 +74,12 @@ export default function AllTricks({ setIsOpen = null }) {
             state={{ trick }}
             style={{
               textDecoration: "none",
-              color: "#461E52",
               fontWeight: "bold",
             }}
           >
-            <ListItemButton>{trick.name}</ListItemButton>
+            <ListItemButton sx={{ color: "text.primary" }}>
+              {trick.name}
+            </ListItemButton>
           </Link>
         </ListItem>
       ))}
