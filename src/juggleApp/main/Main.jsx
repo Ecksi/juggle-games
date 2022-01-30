@@ -1,29 +1,69 @@
-import { Outlet } from "react-router-dom";
-import { Box } from "@mui/material";
-import MobileNav from "../nav/MobileNav";
-import DesktopNav from "../nav/DesktopNav";
+import * as React from "react";
+import { Box, IconButton } from "@mui/material";
+import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
+import CssBaseline from "@mui/material/CssBaseline";
+import JuggleApp from "./JuggleApp";
 
-export default function Main() {
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+
+function ColorModeWrapper({ app }) {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
+
   return (
     <Box
       sx={{
-        display: { xs: "block", md: "grid" },
-        maxWidth: "100%",
-        minHeight: "100vh",
-        padding: "8px",
+        backgroundColor:
+          theme.palette.mode === "dark" ? "background.default" : "divider",
       }}
-      gridTemplateColumns="repeat(12, 1fr)"
     >
-      <Box sx={{ display: { md: "none" } }}>
-        <MobileNav />
-      </Box>
-      <Box sx={{ display: { xs: "none", md: "block" } }} gridColumn="span 3">
-        <DesktopNav />
-      </Box>
-      <Box gridColumn="span 1"></Box>
-      <Box gridColumn="span 8" sx={{ paddingRight: { xs: "0", md: "18px" } }}>
-        <Outlet />
-      </Box>
+      <IconButton
+        onClick={colorMode.toggleColorMode}
+        sx={{
+          position: "absolute",
+          right: "0",
+          margin: { xs: "0", md: "16px 16px 0 0" },
+          color: "text.primary",
+        }}
+      >
+        {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
+      </IconButton>
+      {app}
     </Box>
+  );
+}
+
+export default function Main() {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = React.useState(prefersDarkMode ? "dark" : "light");
+
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    []
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
+
+  return (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <ColorModeWrapper app={<JuggleApp />} />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
