@@ -1,11 +1,11 @@
-// import { Fragment } from "react";
-import { Box } from "@mui/material";
-import juggleMan from "../../assets/img/icons/juggle-man.gif";
-import "./Logo.css";
+import { Box, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import jugglePerson from "../../assets/img/icons/juggle-person.gif";
 
 // add position prop. left - center - right
-export default function Logo({ size = "m", position = "center" }) {
-  const juggleManSize = {
+export default function Logo({ size = "m", position = "center", mode }) {
+  const theme = useTheme();
+  const jugglePersonSize = {
     m: { width: "75px", top: "46px", left: "46px" },
   };
 
@@ -23,29 +23,46 @@ export default function Logo({ size = "m", position = "center" }) {
     <Box
       sx={{
         position: "relative",
-        // height: "124px",
         left: "50%",
         transform: { xs: "translateX(-25%)", md: "translateX(-40%)" },
       }}
     >
-      <section className="text-prop" style={juggleTextProp[size]}>
-        <h1>
+      <section
+        style={{
+          ...juggleTextProp[size],
+          position: "absolute",
+          borderRadius: "50%",
+          textAlign: "center",
+        }}
+      >
+        <Typography color="text.primary">
           {logoText.map((text, i) => (
             <span
               key={i}
-              className={`char-${i} juggle-games-text`}
-              style={juggleTextSize[size]}
+              className={`char-${i}`}
+              style={{
+                ...juggleTextSize[size],
+                position: "absolute",
+                width: "10px",
+                fontFamily: "Monaco, MonoSpace",
+                fontWeight: "bold",
+                transformOrigin: "bottom center",
+                transform: `rotate(${-85 + 15 * i}deg)`,
+              }}
             >
               {text}
             </span>
           ))}
-        </h1>
+        </Typography>
       </section>
       <img
-        alt="A stick man juggling 3 red balls"
-        className="juggle-man"
-        src={juggleMan}
-        style={juggleManSize[size]}
+        alt="A stick person juggling 3 balls"
+        src={jugglePerson}
+        style={{
+          ...jugglePersonSize[size],
+          position: "absolute",
+          filter: theme.palette.mode === "dark" ? "invert(100%)" : "invert(0)",
+        }}
       />
     </Box>
   );

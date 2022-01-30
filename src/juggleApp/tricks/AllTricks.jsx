@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { ArrowForwardIosSharp } from "@mui/icons-material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import "./Trick.css";
 
 // If this prop is not used for desktop- can I just set it to null so it shows up as nothing?
 // This could be applied to navigation component also
@@ -22,12 +23,12 @@ export default function AllTricks({ setIsOpen = null }) {
   const fourBallTricks = useSelector((state) => state.jugglingTricks.fourBall);
   const fiveBallTricks = useSelector((state) => state.jugglingTricks.fiveBall);
   const trickMenu = [
-    [2, fiveBallTricks],
+    // [2, fiveBallTricks],
     [3, threeBallTricks],
     [4, fourBallTricks],
     [5, fiveBallTricks],
-    [6, fiveBallTricks],
-    [7, fiveBallTricks],
+    // [6, fiveBallTricks],
+    // [7, fiveBallTricks],
   ];
   const isMobile = useMediaQuery("(min-width:600px)");
 
@@ -37,10 +38,16 @@ export default function AllTricks({ setIsOpen = null }) {
         key={i}
         sx={{ backgroundColor: "transparent", boxShadow: "none" }}
       >
-        <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
+        <AccordionSummary
+          expandIcon={
+            <ArrowForwardIosSharp sx={{ width: "0.8em", height: "0.8em" }} />
+          }
+        >
           <Typography variant="h5">{trickInfo[0]}-ball tricks</Typography>
         </AccordionSummary>
-        <AccordionDetails>{getTricks(trickInfo[1])}</AccordionDetails>
+        <AccordionDetails sx={{ padding: 0 }}>
+          {getTricks(trickInfo[1])}
+        </AccordionDetails>
       </Accordion>
     ));
 

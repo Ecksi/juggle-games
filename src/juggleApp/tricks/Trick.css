@@ -1,12 +1,3 @@
-.MuiAccordionSummary-root .MuiSvgIcon-root {
-  width: 0.8em;
-  height: 0.8em;
-}
-
-.MuiAccordion-region .MuiAccordionDetails-root {
-  padding: 0;
-}
-
 .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
   min-height: auto;
 }

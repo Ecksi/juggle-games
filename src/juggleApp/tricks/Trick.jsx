@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
-import "./Trick.css";
 
 export default function Trick() {
   const convertNum = {
