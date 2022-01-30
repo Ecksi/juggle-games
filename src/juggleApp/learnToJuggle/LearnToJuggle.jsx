@@ -42,17 +42,18 @@ export default function LearnToJuggle() {
       <Typography
         variant="h4"
         align="center"
-        sx={{ margin: { xs: "18px 0", md: "18px 0 32px" } }}
+        sx={{ margin: { xs: "18px 0", md: "18px auto 32px" } }}
       >
         Learn to Juggle
       </Typography>
-      {/* Visual text above card to show user current/total steps */}
+      {/* Desktop - helper text above card */}
       <Stepper
         nonLinear
         activeStep={activeStep}
         sx={{
           display: { xs: "none", md: "flex" },
           flexWrap: "wrap",
+          justifyContent: "center",
         }}
         connector={<Fragment />}
       >
@@ -70,13 +71,11 @@ export default function LearnToJuggle() {
           </Step>
         ))}
       </Stepper>
-      {/* Core LTJ information */}
       <LearnToJuggleCard
         step={activeStep}
         handleNext={handleNext}
         handlePrev={handlePrev}
       />
-      {/* Visual text above card replaced with circle dots below */}
       <MobileStepper
         activeStep={activeStep}
         steps={steps.length}
@@ -84,7 +83,7 @@ export default function LearnToJuggle() {
           backgroundColor: "transparent",
           justifyContent: "space-between",
           position: "static",
-          marginTop: "24px",
+          marginTop: { xs: "18px", md: "24px" },
           display: { xs: "flex", md: "none " },
         }}
         backButton={

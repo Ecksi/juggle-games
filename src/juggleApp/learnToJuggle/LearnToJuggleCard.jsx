@@ -84,20 +84,32 @@ export default function LearnToJuggleCard({
   return (
     <Card
       sx={{
-        marginTop: { xs: "0", md: "32px" },
+        margin: { xs: "0", md: "32px auto 0" },
         height: { xs: "80vh", md: "500px" },
+        width: { xs: "100%", md: "600px" },
       }}
     >
       <CardContent
-        sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          height: "100%",
+        }}
       >
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom sx={{ display: { md: "none" } }}>
           {steps[step].header}
         </Typography>
         <Typography variant="h5" color="text.secondary" gutterBottom>
           Number of Balls: {steps[step].numOfBalls}
         </Typography>
-        <List sx={{ flexGrow: "3" }}>
+        <List
+          sx={{
+            flexGrow: "3",
+            padding: { xs: "12px 0", md: "12px 24px" },
+            width: "100%",
+          }}
+        >
           {/* some bad naming right here.. steps step steps step */}
           {steps[step].steps.map((step, i) => (
             <ListItem key={i} disablePadding>
@@ -108,6 +120,7 @@ export default function LearnToJuggleCard({
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
+            width: "100%",
             justifyContent: "space-around",
           }}
         >
