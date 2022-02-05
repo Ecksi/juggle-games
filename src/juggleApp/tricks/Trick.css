@@ -1,0 +1,11 @@
+.MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded {
+  min-height: auto;
+}
+
+.MuiAccordionSummary-root .MuiAccordionSummary-content.Mui-expanded {
+  margin: 12px 0;
+}
+
+.MuiAccordionSummary-root .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+  transform: rotate(90deg);
+}

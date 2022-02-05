@@ -1,0 +1,8 @@
+section.MuiBox-root
+  .MuiFormControl-root
+  .MuiOutlinedInput-root
+  .MuiOutlinedInput-notchedOutline {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}

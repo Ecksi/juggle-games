@@ -1,0 +1,9 @@
+.nav-toggle {
+  position: absolute;
+  top: 24px;
+  left: 4px;
+  padding: 6px;
+  width: 50px;
+  cursor: pointer;
+  z-index: 10;
+}
